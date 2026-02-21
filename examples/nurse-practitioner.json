@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "ojp_version": "0.1",
+    "id": "ojp:greenvalley:np-2026-019",
+    "source_url": "https://greenvalleyhealth.example.com/careers/nurse-practitioner",
+    "status": "published",
+    "created_at": "2026-02-05T08:00:00Z",
+    "updated_at": "2026-02-18T11:00:00Z",
+    "expires_at": "2026-06-01T23:59:59Z",
+    "language": "en",
+    "tags": ["nursing", "healthcare", "clinical", "primary-care"]
+  },
+  "role": {
+    "title": "Nurse Practitioner — Primary Care",
+    "summary": "Provide primary care services to a diverse patient population at Green Valley Health's community clinic.",
+    "description": "Green Valley Health is seeking a compassionate and skilled Nurse Practitioner to join our primary care team. You will provide comprehensive healthcare services including diagnosis, treatment, and management of acute and chronic conditions for patients of all ages.\n\nKey responsibilities:\n- Conduct patient assessments, physical exams, and health screenings\n- Diagnose and treat acute and chronic illnesses\n- Prescribe medications and develop treatment plans\n- Order and interpret diagnostic tests (labs, imaging)\n- Provide patient education on preventive care and healthy lifestyle choices\n- Collaborate with physicians, specialists, and allied health professionals\n- Maintain accurate and timely documentation in the EHR system",
+    "employment_type": "full_time",
+    "seniority_level": "mid",
+    "function": "Clinical",
+    "industry": "Healthcare",
+    "start_date": "2026-05-01"
+  },
+  "organization": {
+    "name": "Green Valley Health",
+    "legal_name": "Green Valley Health Services GmbH",
+    "url": "https://greenvalleyhealth.example.com",
+    "logo_url": "https://greenvalleyhealth.example.com/logo.png",
+    "description": "Green Valley Health operates community health clinics across Bavaria, providing accessible primary care, preventive services, and chronic disease management to underserved populations.",
+    "industry": "Healthcare",
+    "size": "201-500",
+    "founded_year": 2010,
+    "headquarters": {
+      "city": "Munich",
+      "region": "Bavaria",
+      "country": "DE"
+    }
+  },
+  "requirements": {
+    "must_have": {
+      "skills": [
+        { "name": "Primary Care", "level": "advanced", "years": 2, "category": "methodology" },
+        { "name": "Patient Assessment", "level": "advanced", "category": "methodology" },
+        { "name": "Pharmacology", "level": "advanced", "category": "methodology" },
+        { "name": "Electronic Health Records (EHR)", "level": "intermediate", "category": "tool" },
+        { "name": "Chronic Disease Management", "level": "intermediate", "category": "methodology" }
+      ],
+      "experience": {
+        "total_years_min": 2,
+        "total_years_max": 15,
+        "description": "Minimum 2 years of clinical experience as a Nurse Practitioner or equivalent advanced practice role."
+      },
+      "education": {
+        "degree": "master",
+        "field": "Nursing (MSN) or equivalent"
+      },
+      "languages": [
+        { "language": "de", "proficiency": "professional" },
+        { "language": "en", "proficiency": "conversational" }
+      ],
+      "credentials": [
+        {
+          "name": "Approbation as Gesundheits- und Krankenpfleger/in",
+          "issuer": "German State Health Authority",
+          "required": true
+        },
+        {
+          "name": "Advanced Practice Nursing Certification",
+          "issuer": "German Nursing Council (DPR) or equivalent",
+          "required": true
+        },
+        {
+          "name": "BLS (Basic Life Support) Certification",
+          "issuer": "AHA or equivalent",
+          "required": true
+        }
+      ],
+      "other": [
+        "Valid prescriptive authority in Germany",
+        "Ability to stand and move for extended periods (8+ hours)",
+        "Ability to lift up to 25 kg for patient assistance"
+      ]
+    },
+    "nice_to_have": {
+      "skills": [
+        { "name": "Pediatrics", "level": "intermediate", "category": "methodology" },
+        { "name": "Mental Health Screening", "level": "beginner", "category": "methodology" },
+        { "name": "Wound Care", "level": "intermediate", "category": "methodology" }
+      ],
+      "credentials": [
+        {
+          "name": "ACLS (Advanced Cardiovascular Life Support)",
+          "issuer": "AHA or equivalent",
+          "required": false
+        },
+        {
+          "name": "Certified Diabetes Educator",
+          "issuer": "DDG (Deutsche Diabetes Gesellschaft)",
+          "required": false
+        }
+      ],
+      "languages": [
+        { "language": "tr", "proficiency": "basic" },
+        { "language": "ar", "proficiency": "basic" }
+      ],
+      "other": [
+        "Experience working with underserved or multicultural patient populations",
+        "Familiarity with German statutory health insurance (GKV) billing"
+      ]
+    }
+  },
+  "offering": {
+    "compensation": {
+      "salary": {
+        "min": 55000,
+        "max": 72000,
+        "currency": "EUR",
+        "period": "annual"
+      },
+      "bonus": {
+        "type": "annual",
+        "amount": 3000,
+        "currency": "EUR",
+        "details": "Annual performance bonus based on patient satisfaction and quality metrics."
+      }
+    },
+    "location": {
+      "model": "onsite",
+      "onsite_address": {
+        "street": "Lindwurmstraße 48",
+        "city": "Munich",
+        "region": "Bavaria",
+        "postal_code": "80337",
+        "country": "DE"
+      }
+    },
+    "benefits": [
+      { "category": "vacation", "description": "30 days paid vacation per year." },
+      { "category": "health", "description": "Supplementary private health and dental insurance." },
+      { "category": "retirement", "description": "Company pension plan (bAV) with employer contribution." },
+      { "category": "education", "description": "EUR 2,500 annual continuing education budget including paid study days.", "details": "Covers CME credits, conferences, and specialty certifications." },
+      { "category": "transport", "description": "MVV Jobticket (Munich public transit) subsidized." },
+      { "category": "parental_leave", "description": "Generous parental leave with salary top-up." },
+      { "category": "wellness", "description": "Free annual health check-up and flu vaccination." },
+      { "category": "insurance", "description": "Professional liability insurance fully covered by employer." }
+    ],
+    "growth": {
+      "career_path": "Nurse Practitioner → Lead NP → Clinical Director. Specialty tracks available in geriatrics, pediatrics, and chronic care management.",
+      "learning_budget": {
+        "amount": 2500,
+        "currency": "EUR",
+        "period": "annual"
+      },
+      "mentorship": true,
+      "conference_budget": true,
+      "internal_mobility": true
+    },
+    "work_schedule": {
+      "hours_per_week": 40,
+      "flexible_hours": false,
+      "shift_work": true,
+      "shift_details": "Rotating shifts: early (07:00–15:00), late (12:00–20:00). Weekend rotation approximately 1 in 4. No overnight shifts.",
+      "overtime_expected": false
+    }
+  },
+  "team": {
+    "name": "Primary Care — Munich Clinic",
+    "size": 15,
+    "reports_to": "Clinical Director",
+    "direct_reports": 0,
+    "methodologies": ["Evidence-Based Practice", "Multidisciplinary Care"],
+    "collaboration_tools": ["CGM TURBOMED (EHR)", "Microsoft Teams"]
+  },
+  "process": {
+    "stages": [
+      {
+        "name": "Application Review",
+        "type": "application_review",
+        "duration_minutes": 0,
+        "description": "Review of CV, cover letter, and credential verification. Response within 10 business days."
+      },
+      {
+        "name": "Phone Screen",
+        "type": "phone_screen",
+        "duration_minutes": 20,
+        "description": "Brief call with HR to discuss role logistics, schedule, and salary expectations.",
+        "interviewers": ["HR Manager"]
+      },
+      {
+        "name": "Clinical Interview",
+        "type": "technical_interview",
+        "duration_minutes": 60,
+        "description": "In-depth discussion of clinical competencies, case-based scenarios, and patient care philosophy.",
+        "interviewers": ["Clinical Director", "Senior Physician"]
+      },
+      {
+        "name": "Onsite Trial Day",
+        "type": "onsite",
+        "duration_minutes": 480,
+        "description": "Paid trial day at the clinic. Shadow the team, interact with patients (supervised), and experience the daily workflow.",
+        "interviewers": ["Clinical Director", "Lead Nurse Practitioner"]
+      },
+      {
+        "name": "Reference Check",
+        "type": "reference_check",
+        "duration_minutes": 0,
+        "description": "Two professional references required."
+      },
+      {
+        "name": "Offer",
+        "type": "offer",
+        "duration_minutes": 30,
+        "description": "Verbal offer followed by written contract within 5 business days."
+      }
+    ],
+    "total_duration_days": 28,
+    "apply_url": "https://greenvalleyhealth.example.com/careers/nurse-practitioner/apply",
+    "apply_email": "careers@greenvalleyhealth.example.com",
+    "contact": {
+      "name": "Thomas Weber",
+      "title": "HR Manager",
+      "email": "t.weber@greenvalleyhealth.example.com"
+    }
+  },
+  "culture": {
+    "values": ["Patient First", "Compassion", "Evidence-Based Care", "Community", "Integrity"],
+    "work_style": "Our clinics are collaborative, patient-centered environments. Care teams meet daily for brief huddles and weekly for case reviews. We value work-life balance and maintain predictable schedules.",
+    "dei_statement": "Green Valley Health is committed to serving diverse communities and building a workforce that reflects the patients we serve. We are an equal opportunity employer and provide accommodations for disabilities.",
+    "social_links": {
+      "linkedin": "https://linkedin.com/company/greenvalleyhealth-example"
+    }
+  },
+  "visibility": {
+    "salary_visible": true,
+    "company_visible": true,
+    "team_visible": true,
+    "process_visible": true,
+    "distribution": ["public", "platform_only"]
+  },
+  "extensions": {
+    "healthcare": {
+      "patient_volume": "20-25 patients per day",
+      "ehr_system": "CGM TURBOMED",
+      "prescriptive_authority_required": true,
+      "physical_requirements": [
+        "Standing and walking for extended periods (8+ hours)",
+        "Lifting up to 25 kg",
+        "Manual dexterity for clinical procedures"
+      ]
+    }
+  }
+}

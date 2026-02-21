@@ -1,0 +1,217 @@
+{
+  "meta": {
+    "ojp_version": "0.1",
+    "id": "ojp:acme:backend-senior-2026-001",
+    "source_url": "https://acme-corp.example.com/careers/backend-senior",
+    "status": "published",
+    "created_at": "2026-02-01T09:00:00Z",
+    "updated_at": "2026-02-15T14:30:00Z",
+    "expires_at": "2026-04-01T23:59:59Z",
+    "language": "en",
+    "tags": ["backend", "golang", "postgresql", "distributed-systems"]
+  },
+  "role": {
+    "title": "Senior Backend Engineer",
+    "summary": "Design and build scalable backend services powering Acme's logistics platform.",
+    "description": "We are looking for a Senior Backend Engineer to join our Platform team in Berlin. You will design, build, and operate high-throughput microservices that power Acme's real-time logistics network. You will work closely with product, data, and infrastructure teams to deliver reliable, scalable systems that handle millions of events per day.\n\nKey responsibilities:\n- Architect and implement backend services in Go\n- Design and optimize PostgreSQL schemas and queries\n- Build event-driven pipelines using Kafka\n- Mentor junior engineers and contribute to technical strategy\n- Participate in on-call rotation (1 week per quarter)",
+    "employment_type": "full_time",
+    "seniority_level": "senior",
+    "function": "Engineering",
+    "industry": "Logistics & Supply Chain",
+    "start_date": "2026-04-01"
+  },
+  "organization": {
+    "name": "Acme Corp",
+    "legal_name": "Acme Corporation GmbH",
+    "url": "https://acme-corp.example.com",
+    "logo_url": "https://acme-corp.example.com/logo.png",
+    "description": "Acme Corp is a Series B logistics technology company building the operating system for last-mile delivery across Europe.",
+    "industry": "Logistics Technology",
+    "size": "201-500",
+    "founded_year": 2019,
+    "headquarters": {
+      "city": "Berlin",
+      "region": "Berlin",
+      "country": "DE"
+    },
+    "identifiers": {
+      "linkedin_url": "https://linkedin.com/company/acme-corp-example"
+    }
+  },
+  "requirements": {
+    "must_have": {
+      "skills": [
+        { "name": "Go", "level": "advanced", "years": 3, "category": "programming_language" },
+        { "name": "PostgreSQL", "level": "advanced", "years": 3, "category": "database" },
+        { "name": "REST API Design", "level": "advanced", "category": "methodology" },
+        { "name": "Docker", "level": "intermediate", "category": "tool" },
+        { "name": "Kubernetes", "level": "intermediate", "category": "tool" }
+      ],
+      "experience": {
+        "total_years_min": 5,
+        "total_years_max": 12,
+        "description": "At least 5 years of professional backend development experience."
+      },
+      "education": {
+        "degree": "bachelor",
+        "field": "Computer Science or related field"
+      },
+      "languages": [
+        { "language": "en", "proficiency": "professional" }
+      ]
+    },
+    "nice_to_have": {
+      "skills": [
+        { "name": "Apache Kafka", "level": "intermediate", "category": "tool" },
+        { "name": "gRPC", "level": "intermediate", "category": "framework" },
+        { "name": "Terraform", "level": "beginner", "category": "tool" },
+        { "name": "Prometheus", "level": "intermediate", "category": "tool" }
+      ],
+      "languages": [
+        { "language": "de", "proficiency": "conversational" }
+      ],
+      "other": [
+        "Experience with event-driven architectures",
+        "Previous work in logistics or supply chain domain"
+      ]
+    }
+  },
+  "offering": {
+    "compensation": {
+      "salary": {
+        "min": 75000,
+        "max": 95000,
+        "currency": "EUR",
+        "period": "annual"
+      },
+      "equity": {
+        "offered": true,
+        "type": "vsop",
+        "vesting_period_months": 48,
+        "details": "0.05%–0.15% VSOP with 1-year cliff and 4-year vesting."
+      },
+      "bonus": {
+        "type": "annual",
+        "amount": 5000,
+        "currency": "EUR",
+        "details": "Performance-based annual bonus up to EUR 5,000."
+      }
+    },
+    "location": {
+      "model": "hybrid",
+      "onsite_address": {
+        "street": "Friedrichstraße 123",
+        "city": "Berlin",
+        "region": "Berlin",
+        "postal_code": "10117",
+        "country": "DE"
+      },
+      "hybrid_details": {
+        "onsite_days_per_week": 3,
+        "flexible": true
+      }
+    },
+    "benefits": [
+      { "category": "vacation", "description": "30 days paid vacation per year." },
+      { "category": "health", "description": "Supplementary private health insurance.", "details": "Covers dental, vision, and specialist visits." },
+      { "category": "transport", "description": "BVG Jobticket (public transit) fully covered." },
+      { "category": "food", "description": "Daily lunch allowance of EUR 7.50." },
+      { "category": "education", "description": "EUR 2,000 annual learning & development budget." },
+      { "category": "equipment", "description": "MacBook Pro and ergonomic home-office setup." },
+      { "category": "retirement", "description": "Company-matched pension scheme (bAV)." },
+      { "category": "parental_leave", "description": "Full salary top-up during parental leave for up to 6 months." }
+    ],
+    "growth": {
+      "career_path": "Senior Engineer → Staff Engineer → Principal Engineer. Leadership track also available (Engineering Manager).",
+      "learning_budget": {
+        "amount": 2000,
+        "currency": "EUR",
+        "period": "annual"
+      },
+      "mentorship": true,
+      "conference_budget": true,
+      "internal_mobility": true
+    },
+    "work_schedule": {
+      "hours_per_week": 40,
+      "flexible_hours": true,
+      "shift_work": false,
+      "overtime_expected": false
+    }
+  },
+  "team": {
+    "name": "Platform Engineering",
+    "size": 8,
+    "reports_to": "VP of Engineering",
+    "tech_stack": ["Go", "PostgreSQL", "Kafka", "Kubernetes", "Terraform", "Prometheus", "Grafana"],
+    "methodologies": ["Kanban", "Continuous Deployment"],
+    "collaboration_tools": ["Slack", "Linear", "GitHub", "Notion"]
+  },
+  "process": {
+    "stages": [
+      {
+        "name": "Application Review",
+        "type": "application_review",
+        "duration_minutes": 0,
+        "description": "CV and cover letter reviewed by hiring manager. Response within 5 business days."
+      },
+      {
+        "name": "Intro Call",
+        "type": "phone_screen",
+        "duration_minutes": 30,
+        "description": "30-minute video call with a recruiter to discuss the role, expectations, and your background.",
+        "interviewers": ["Talent Acquisition Partner"]
+      },
+      {
+        "name": "Technical Interview",
+        "type": "technical_interview",
+        "duration_minutes": 60,
+        "description": "60-minute live coding session focused on Go, system design, and problem solving.",
+        "interviewers": ["Senior Engineer", "Staff Engineer"]
+      },
+      {
+        "name": "System Design Deep-Dive",
+        "type": "technical_interview",
+        "duration_minutes": 60,
+        "description": "Whiteboard session designing a distributed system relevant to our domain.",
+        "interviewers": ["VP of Engineering", "Staff Engineer"]
+      },
+      {
+        "name": "Culture & Values",
+        "type": "behavioral_interview",
+        "duration_minutes": 45,
+        "description": "Conversation about collaboration, communication, and alignment with company values.",
+        "interviewers": ["Engineering Manager", "Product Manager"]
+      },
+      {
+        "name": "Offer",
+        "type": "offer",
+        "duration_minutes": 30,
+        "description": "Verbal offer followed by written contract within 2 business days."
+      }
+    ],
+    "total_duration_days": 21,
+    "apply_url": "https://acme-corp.example.com/careers/backend-senior/apply",
+    "contact": {
+      "name": "Maria Schmidt",
+      "title": "Talent Acquisition Partner",
+      "email": "maria.schmidt@acme-corp.example.com"
+    }
+  },
+  "culture": {
+    "values": ["Ownership", "Transparency", "Continuous Improvement", "Kindness"],
+    "work_style": "We are a low-meeting, high-autonomy team. Engineers own features end-to-end from design to production. We ship small increments frequently and rely on async communication for most decisions.",
+    "dei_statement": "Acme Corp is an equal opportunity employer. We actively seek to create a diverse and inclusive environment and encourage applications from all backgrounds.",
+    "social_links": {
+      "blog": "https://acme-corp.example.com/blog",
+      "linkedin": "https://linkedin.com/company/acme-corp-example"
+    }
+  },
+  "visibility": {
+    "salary_visible": true,
+    "company_visible": true,
+    "team_visible": true,
+    "process_visible": true,
+    "distribution": ["public"]
+  }
+}

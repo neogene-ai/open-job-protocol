@@ -1,0 +1,203 @@
+{
+  "meta": {
+    "ojp_version": "0.1",
+    "id": "ojp:novasoft:pm-mid-2026-042",
+    "source_url": "https://novasoft.example.com/careers/product-manager",
+    "status": "published",
+    "created_at": "2026-01-20T10:00:00Z",
+    "updated_at": "2026-02-10T16:00:00Z",
+    "expires_at": "2026-05-01T23:59:59Z",
+    "language": "en",
+    "tags": ["product-management", "b2b", "saas", "remote"]
+  },
+  "role": {
+    "title": "Product Manager",
+    "summary": "Own the roadmap for NovaSoft's core B2B collaboration platform.",
+    "description": "We are looking for a Product Manager to take ownership of our B2B collaboration suite. You will define product strategy, prioritize the backlog, and work cross-functionally with engineering, design, and customer success to ship features that delight our 500+ enterprise customers.\n\nKey responsibilities:\n- Define and communicate product vision and quarterly roadmap\n- Conduct customer discovery interviews and analyze usage data\n- Write clear product specs and acceptance criteria\n- Collaborate closely with engineering and design through the full product lifecycle\n- Track KPIs and iterate based on data-driven insights",
+    "employment_type": "full_time",
+    "seniority_level": "mid",
+    "function": "Product",
+    "industry": "Enterprise Software",
+    "start_date": "2026-04-15"
+  },
+  "organization": {
+    "name": "NovaSoft",
+    "legal_name": "NovaSoft Solutions B.V.",
+    "url": "https://novasoft.example.com",
+    "logo_url": "https://novasoft.example.com/assets/logo.svg",
+    "description": "NovaSoft builds intelligent collaboration tools for distributed enterprise teams. Our platform is used by 500+ companies across 30 countries.",
+    "industry": "Enterprise SaaS",
+    "size": "51-200",
+    "founded_year": 2021,
+    "headquarters": {
+      "city": "Amsterdam",
+      "region": "North Holland",
+      "country": "NL"
+    },
+    "identifiers": {
+      "linkedin_url": "https://linkedin.com/company/novasoft-example"
+    }
+  },
+  "requirements": {
+    "must_have": {
+      "skills": [
+        { "name": "Product Strategy", "level": "advanced", "category": "methodology" },
+        { "name": "User Research", "level": "intermediate", "category": "methodology" },
+        { "name": "Agile / Scrum", "level": "advanced", "category": "methodology" },
+        { "name": "SQL", "level": "intermediate", "category": "tool" },
+        { "name": "Data Analysis", "level": "intermediate", "category": "methodology" }
+      ],
+      "experience": {
+        "total_years_min": 3,
+        "total_years_max": 7,
+        "description": "3+ years in a product management role at a B2B SaaS company."
+      },
+      "education": {
+        "degree": "bachelor"
+      },
+      "languages": [
+        { "language": "en", "proficiency": "native_or_bilingual" }
+      ]
+    },
+    "nice_to_have": {
+      "skills": [
+        { "name": "Figma", "level": "beginner", "category": "tool" },
+        { "name": "Amplitude", "level": "intermediate", "category": "tool" },
+        { "name": "API Design", "level": "beginner", "category": "methodology" }
+      ],
+      "languages": [
+        { "language": "de", "proficiency": "basic" },
+        { "language": "nl", "proficiency": "basic" }
+      ],
+      "other": [
+        "Experience with enterprise sales cycles",
+        "Background in collaboration or productivity tools",
+        "Familiarity with AI/ML product features"
+      ]
+    }
+  },
+  "offering": {
+    "compensation": {
+      "salary": {
+        "min": 65000,
+        "max": 85000,
+        "currency": "EUR",
+        "period": "annual"
+      },
+      "equity": {
+        "offered": true,
+        "type": "stock_options",
+        "vesting_period_months": 48,
+        "details": "Employee stock option plan with 1-year cliff."
+      }
+    },
+    "location": {
+      "model": "remote",
+      "remote_policy": {
+        "timezone_range": "UTC-1 to UTC+3",
+        "allowed_countries": ["NL", "DE", "BE", "FR", "ES", "PT", "IT", "AT", "PL", "CZ", "DK", "SE", "NO", "FI", "IE", "GB"],
+        "travel_requirement": "Quarterly team offsite in Amsterdam (3–4 days), travel expenses fully covered."
+      }
+    },
+    "benefits": [
+      { "category": "vacation", "description": "28 days paid vacation plus local public holidays." },
+      { "category": "health", "description": "Comprehensive health insurance package." },
+      { "category": "equipment", "description": "EUR 1,500 home office setup budget plus MacBook Pro." },
+      { "category": "education", "description": "EUR 1,500 annual learning budget for courses, books, and conferences." },
+      { "category": "wellness", "description": "EUR 50/month wellness stipend." },
+      { "category": "parental_leave", "description": "16 weeks fully paid parental leave for all parents." }
+    ],
+    "growth": {
+      "career_path": "Product Manager → Senior Product Manager → Group PM → Director of Product. You will have a clear growth framework with bi-annual reviews.",
+      "learning_budget": {
+        "amount": 1500,
+        "currency": "EUR",
+        "period": "annual"
+      },
+      "mentorship": true,
+      "conference_budget": true,
+      "internal_mobility": true
+    },
+    "work_schedule": {
+      "hours_per_week": 40,
+      "flexible_hours": true,
+      "shift_work": false,
+      "overtime_expected": false
+    }
+  },
+  "team": {
+    "name": "Core Product",
+    "size": 12,
+    "reports_to": "VP of Product",
+    "methodologies": ["Scrum", "Dual-Track Agile"],
+    "collaboration_tools": ["Slack", "Linear", "Figma", "Notion", "Amplitude"]
+  },
+  "process": {
+    "stages": [
+      {
+        "name": "Application Review",
+        "type": "application_review",
+        "duration_minutes": 0,
+        "description": "Review of CV and portfolio. Response within 7 business days."
+      },
+      {
+        "name": "Recruiter Screen",
+        "type": "phone_screen",
+        "duration_minutes": 30,
+        "description": "Brief call to discuss the role, your experience, and logistics.",
+        "interviewers": ["People Partner"]
+      },
+      {
+        "name": "Product Case Study",
+        "type": "case_study",
+        "duration_minutes": 90,
+        "description": "Take-home product case (2 hours max). You will present and discuss your approach in a 90-minute session.",
+        "interviewers": ["VP of Product", "Senior Product Manager"]
+      },
+      {
+        "name": "Cross-Functional Interview",
+        "type": "behavioral_interview",
+        "duration_minutes": 45,
+        "description": "Meet with an engineering lead and a designer to discuss collaboration style.",
+        "interviewers": ["Engineering Lead", "Senior Product Designer"]
+      },
+      {
+        "name": "Founder Chat",
+        "type": "behavioral_interview",
+        "duration_minutes": 30,
+        "description": "Informal conversation with a co-founder about vision and culture fit.",
+        "interviewers": ["Co-founder / CEO"]
+      },
+      {
+        "name": "Offer",
+        "type": "offer",
+        "duration_minutes": 30,
+        "description": "Offer call followed by written contract."
+      }
+    ],
+    "total_duration_days": 18,
+    "apply_url": "https://novasoft.example.com/careers/product-manager/apply",
+    "contact": {
+      "name": "Lena de Vries",
+      "title": "People Partner",
+      "email": "lena@novasoft.example.com"
+    }
+  },
+  "culture": {
+    "values": ["Customer Obsession", "Ship & Learn", "Radical Candor", "Default to Open"],
+    "work_style": "We are a remote-first company that values async communication and deep work. We have two no-meeting days per week and document decisions in writing. Teams operate with high autonomy and clear accountability.",
+    "dei_statement": "NovaSoft is committed to building a diverse team. We welcome applications regardless of background and provide equal opportunities in hiring, promotion, and compensation.",
+    "social_links": {
+      "blog": "https://novasoft.example.com/blog",
+      "linkedin": "https://linkedin.com/company/novasoft-example",
+      "twitter": "https://twitter.com/novasoft_example"
+    }
+  },
+  "visibility": {
+    "salary_visible": true,
+    "company_visible": true,
+    "team_visible": true,
+    "process_visible": true,
+    "distribution": ["public", "agents_only"]
+  }
+}
