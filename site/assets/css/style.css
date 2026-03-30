@@ -77,6 +77,86 @@ a:hover { color: var(--color-accent-dk); text-decoration: underline; }
   padding: 0.15em 0.5em;
   border-radius: 99px;
   letter-spacing: 0.02em;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  font-family: inherit;
+  line-height: 1;
+  transition: background var(--transition);
+}
+.nav-version:hover { background: #dce4f8; }
+
+.version-chevron {
+  width: 8px;
+  height: 5px;
+  transition: transform var(--transition);
+  fill: currentColor;
+}
+
+.version-dropdown {
+  position: relative;
+}
+
+.version-dropdown.open .version-chevron {
+  transform: rotate(180deg);
+}
+
+.version-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  min-width: 120px;
+  z-index: 200;
+  overflow: hidden;
+}
+
+.version-menu li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.version-dropdown.open .version-menu {
+  display: block;
+}
+
+.version-menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background var(--transition);
+}
+.version-menu a:hover { background: var(--color-bg-alt); text-decoration: none; }
+
+.version-menu a.version-current {
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.version-latest {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #d1fae5;
+  color: #059669;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
 }
 
 .nav-links {

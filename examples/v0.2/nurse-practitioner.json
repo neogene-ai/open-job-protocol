@@ -1,0 +1,96 @@
+{
+  "schema_version": "0.2.0",
+  "ojp_id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+  "created_at": "2026-03-10T08:00:00Z",
+  "updated_at": "2026-03-25T16:00:00Z",
+  "status": "active",
+  "valid_through": "2026-05-31",
+  "title": "Nurse Practitioner – Cardiac ICU",
+  "description": "We are seeking an experienced Nurse Practitioner for our 24-bed Cardiac Intensive Care Unit. You will manage acute and critically ill cardiac patients, perform advanced assessments, order and interpret diagnostics, and collaborate with attending cardiologists and cardiac surgeons. Rotating shifts including nights and weekends.",
+  "summary": "NP for 24-bed Cardiac ICU. Onsite Hamburg, rotating shifts. Requires ACLS and critical care experience.",
+  "employment_type": "full_time",
+  "seniority": "senior",
+  "function": "Clinical – Nursing",
+  "total_openings": 3,
+  "organization": {
+    "name": "Universitätsklinikum Hamburg-Eppendorf",
+    "url": "https://www.uke.de",
+    "industry": "Healthcare",
+    "size": "enterprise",
+    "department": "Cardiac ICU",
+    "headquarters": "Hamburg, DE"
+  },
+  "location": {
+    "arrangement": "onsite",
+    "country": "DE",
+    "city": "Hamburg",
+    "relocation_support": true,
+    "visa_sponsorship": true
+  },
+  "salary_band": {
+    "min": 55000,
+    "max": 72000,
+    "currency": "EUR",
+    "period": "annual"
+  },
+  "salary_transparency": "on_request",
+  "must_have": {
+    "skills": [
+      { "name": "Critical Care Nursing", "min_level": 4, "min_years": 5 },
+      { "name": "Hemodynamic Monitoring", "min_level": 4 },
+      { "name": "Mechanical Ventilation", "min_level": 3 },
+      { "name": "ECG Interpretation", "min_level": 4 }
+    ],
+    "experience_years": { "min": 5 },
+    "credentials": ["Master of Science in Nursing or equivalent"],
+    "certifications": ["ACLS", "BLS"],
+    "languages": [
+      { "language": "de", "proficiency": "C1" }
+    ],
+    "work_authorization": ["DE"]
+  },
+  "nice_to_have": {
+    "skills": [
+      { "name": "ECMO Management", "min_level": 2 },
+      { "name": "Ultrasound-guided IV Access", "min_level": 2 }
+    ],
+    "certifications": ["CCRN", "Fachweiterbildung Intensivpflege"],
+    "languages": [
+      { "language": "en", "proficiency": "B2" }
+    ]
+  },
+  "benefits": [
+    { "category": "health", "description": "Comprehensive health and dental insurance (TVöD)" },
+    { "category": "retirement", "description": "Public sector pension (VBL)" },
+    { "category": "development", "description": "Funded continuing education including conference attendance and specialty certifications" },
+    { "category": "family", "description": "On-campus childcare facility with priority placement" },
+    { "category": "financial", "description": "Night and weekend shift differentials per TVöD-P" }
+  ],
+  "team": {
+    "name": "Cardiac ICU Nursing Team",
+    "size": 42,
+    "reports_to": "Head of Cardiac ICU Nursing",
+    "description": "Multidisciplinary team caring for post-cardiac surgery and acute cardiac patients in a university hospital setting."
+  },
+  "process": {
+    "stages": [
+      { "name": "Application review", "type": "screening", "duration_minutes": 0 },
+      { "name": "Interview with nursing leadership", "type": "behavioral", "duration_minutes": 45 },
+      { "name": "Clinical skills assessment", "type": "technical", "duration_minutes": 60 },
+      { "name": "Offer", "type": "offer", "duration_minutes": 30 }
+    ],
+    "total_duration_days": 21,
+    "decision_timeline": "Within 2 weeks after clinical assessment",
+    "application_url": "https://www.uke.de/karriere/np-cardiac-icu",
+    "accepts_otp_profile": true,
+    "ai_screening": false
+  },
+  "culture": {
+    "values": ["Patient safety", "Evidence-based practice", "Interdisciplinary collaboration"],
+    "work_style": ["structured-shifts", "team-based", "continuous-improvement"]
+  },
+  "source": {
+    "agent_id": "uke-recruiting-system",
+    "platform": "uke-ats"
+  }
+}

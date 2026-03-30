@@ -1,0 +1,369 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openjobprotocol.org/schema/v0.2/ojp.schema.json",
+  "title": "Open Job Protocol v0.2",
+  "description": "Machine-readable job posting for agent-to-agent hiring transactions. Aligned with OTP v0.2.",
+  "type": "object",
+
+  "required": [
+    "schema_version",
+    "ojp_id",
+    "created_at",
+    "updated_at",
+    "status",
+    "title",
+    "description",
+    "employment_type",
+    "organization",
+    "location"
+  ],
+
+  "$defs": {
+    "salary_band": {
+      "type": "object",
+      "required": ["min", "max", "currency", "period"],
+      "properties": {
+        "min": { "type": "number", "minimum": 0 },
+        "max": { "type": "number", "minimum": 0 },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "ISO 4217 currency code"
+        },
+        "period": {
+          "type": "string",
+          "enum": ["annual", "monthly", "daily", "hourly"]
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "skill_requirement": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "min_level": { "type": "integer", "minimum": 1, "maximum": 5, "description": "Maps to OTP skills[].level" },
+        "min_years": { "type": "number", "minimum": 0, "description": "Maps to OTP skills[].years" },
+        "esco_id": {
+          "type": "string",
+          "pattern": "^S\\d+(\\.\\d+)*$",
+          "description": "ESCO taxonomy skill identifier"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "language_requirement": {
+      "type": "object",
+      "required": ["language", "proficiency"],
+      "properties": {
+        "language": {
+          "type": "string",
+          "pattern": "^[a-z]{2}$",
+          "description": "ISO 639-1 language code — matches OTP languages[].language"
+        },
+        "proficiency": {
+          "type": "string",
+          "enum": ["A1", "A2", "B1", "B2", "C1", "C2", "native"],
+          "description": "Minimum CEFR level — matches OTP languages[].proficiency"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "organization_object": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "maxLength": 200 },
+        "url": { "type": "string", "format": "uri" },
+        "industry": { "type": "string", "maxLength": 100 },
+        "size": {
+          "type": "string",
+          "enum": ["startup", "scale_up", "mid_market", "enterprise"],
+          "description": "Matches OTP preferences.company_size values"
+        },
+        "department": { "type": "string", "maxLength": 100 },
+        "headquarters": { "type": "string", "maxLength": 200 }
+      },
+      "additionalProperties": false
+    },
+
+    "location_object": {
+      "type": "object",
+      "required": ["arrangement"],
+      "properties": {
+        "arrangement": {
+          "type": "string",
+          "enum": ["onsite", "hybrid", "remote"],
+          "description": "Work arrangement — values match OTP work_model items"
+        },
+        "country": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "description": "ISO 3166-1 alpha-2 — matches OTP location.country"
+        },
+        "city": { "type": "string", "maxLength": 100 },
+        "region": { "type": "string", "maxLength": 100 },
+        "remote_regions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]{2}$",
+            "description": "ISO 3166-1 alpha-2 country codes for remote eligibility"
+          }
+        },
+        "relocation_support": { "type": "boolean" },
+        "visa_sponsorship": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+
+    "hiring_stage": {
+      "type": "object",
+      "required": ["name", "type"],
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "type": {
+          "type": "string",
+          "enum": ["screening", "technical", "behavioral", "case_study", "take_home", "offer", "other"]
+        },
+        "duration_minutes": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+
+    "benefit": {
+      "type": "object",
+      "required": ["category", "description"],
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": ["health", "retirement", "development", "flexibility", "family", "financial", "other"]
+        },
+        "description": { "type": "string", "maxLength": 500 }
+      },
+      "additionalProperties": false
+    },
+
+    "source": {
+      "type": "object",
+      "required": ["agent_id"],
+      "properties": {
+        "agent_id": { "type": "string", "maxLength": 200 },
+        "platform": { "type": "string", "maxLength": 200 }
+      },
+      "additionalProperties": false
+    }
+  },
+
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.2.0",
+      "description": "Semantic version of the OJP schema"
+    },
+    "ojp_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique job posting identifier"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Posting creation timestamp (ISO 8601)"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last modification timestamp (ISO 8601)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "paused", "closed", "expired", "filled"],
+      "description": "Lifecycle status"
+    },
+    "valid_through": {
+      "type": "string",
+      "format": "date",
+      "description": "Expiration date"
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Job title"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Full role description"
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "One-paragraph agent-optimized role summary"
+    },
+    "employment_type": {
+      "type": "string",
+      "enum": ["full_time", "part_time", "contract", "freelance", "internship", "temporary"]
+    },
+    "seniority": {
+      "type": "string",
+      "enum": ["intern", "junior", "mid", "senior", "staff", "lead", "principal", "director", "vp", "c_level"],
+      "description": "Matches OTP seniority enum exactly"
+    },
+    "function": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Organizational function (e.g. Engineering, Product, Sales)"
+    },
+    "total_openings": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "organization": { "$ref": "#/$defs/organization_object" },
+    "location": { "$ref": "#/$defs/location_object" },
+    "salary_band": {
+      "allOf": [{ "$ref": "#/$defs/salary_band" }],
+      "description": "Compensation range — same structure as OTP salary_band"
+    },
+    "salary_transparency": {
+      "type": "string",
+      "enum": ["public", "on_request", "after_interview"]
+    },
+
+    "must_have": {
+      "type": "object",
+      "description": "Hard requirements — candidates must meet all. An agent must not present a candidate who fails any must_have.",
+      "properties": {
+        "skills": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/skill_requirement" }
+        },
+        "experience_years": {
+          "type": "object",
+          "properties": {
+            "min": { "type": "number", "minimum": 0 },
+            "max": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "credentials": {
+          "type": "array",
+          "items": { "type": "string", "maxLength": 200 },
+          "description": "Required degrees or qualifications"
+        },
+        "certifications": {
+          "type": "array",
+          "items": { "type": "string", "maxLength": 200 },
+          "description": "Required certifications"
+        },
+        "languages": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/language_requirement" }
+        },
+        "work_authorization": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]{2}$",
+            "description": "ISO 3166-1 alpha-2 — matches OTP visa_status.authorized_countries"
+          },
+          "description": "Countries where work authorization is required"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "nice_to_have": {
+      "type": "object",
+      "description": "Preferred qualifications — bonus scoring, not hard filters.",
+      "properties": {
+        "skills": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/skill_requirement" }
+        },
+        "experience_years": {
+          "type": "object",
+          "properties": {
+            "preferred": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "credentials": {
+          "type": "array",
+          "items": { "type": "string", "maxLength": 200 }
+        },
+        "certifications": {
+          "type": "array",
+          "items": { "type": "string", "maxLength": 200 }
+        },
+        "languages": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/language_requirement" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "benefits": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/benefit" }
+    },
+
+    "team": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "size": { "type": "integer", "minimum": 1 },
+        "reports_to": { "type": "string", "maxLength": 200 },
+        "tech_stack": {
+          "type": "array",
+          "items": { "type": "string", "maxLength": 100 }
+        },
+        "methodology": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 1000 }
+      },
+      "additionalProperties": false
+    },
+
+    "process": {
+      "type": "object",
+      "properties": {
+        "stages": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/hiring_stage" }
+        },
+        "total_duration_days": { "type": "integer", "minimum": 0 },
+        "decision_timeline": { "type": "string", "maxLength": 200 },
+        "application_url": { "type": "string", "format": "uri" },
+        "accepts_otp_profile": {
+          "type": "boolean",
+          "description": "Whether the employer accepts OTP profile submissions"
+        },
+        "ai_screening": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+
+    "culture": {
+      "type": "object",
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": { "type": "string", "maxLength": 100 }
+        },
+        "work_style": {
+          "type": "array",
+          "items": { "type": "string", "maxLength": 100 }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "source": { "$ref": "#/$defs/source" }
+  },
+
+  "additionalProperties": false
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.2.0",
+  "ojp_id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+  "created_at": "2026-03-20T11:00:00Z",
+  "updated_at": "2026-03-20T11:00:00Z",
+  "status": "active",
+  "title": "Product Manager",
+  "description": "Join our product team to own the roadmap for our core B2B analytics platform. You will work closely with engineering, design, and customer success to translate user needs into features that drive retention and expansion revenue. You will run discovery sprints, write specs, and measure outcomes.",
+  "summary": "Mid-level PM for B2B analytics platform. Remote-first, EUR 60-75k. Focus on retention and expansion features.",
+  "employment_type": "full_time",
+  "seniority": "mid",
+  "function": "Product",
+  "total_openings": 1,
+  "organization": {
+    "name": "DataFlow GmbH",
+    "url": "https://dataflow.example.com",
+    "industry": "B2B SaaS",
+    "size": "scale_up",
+    "headquarters": "Munich, DE"
+  },
+  "location": {
+    "arrangement": "remote",
+    "country": "DE",
+    "remote_regions": ["DE", "AT", "CH", "NL", "ES", "PT"],
+    "relocation_support": false,
+    "visa_sponsorship": false
+  },
+  "salary_band": {
+    "min": 60000,
+    "max": 75000,
+    "currency": "EUR",
+    "period": "annual"
+  },
+  "salary_transparency": "public",
+  "must_have": {
+    "skills": [
+      { "name": "Product Management" },
+      { "name": "SQL", "min_level": 2 },
+      { "name": "A/B Testing" }
+    ],
+    "experience_years": { "min": 3 },
+    "languages": [
+      { "language": "en", "proficiency": "C1" }
+    ]
+  },
+  "nice_to_have": {
+    "skills": [
+      { "name": "Figma" },
+      { "name": "Python", "min_level": 2 }
+    ],
+    "credentials": ["MBA or equivalent"],
+    "languages": [
+      { "language": "de", "proficiency": "B2" }
+    ]
+  },
+  "benefits": [
+    { "category": "flexibility", "description": "Fully remote with optional co-working budget (300 EUR/month)" },
+    { "category": "development", "description": "Annual learning budget of 2,000 EUR" },
+    { "category": "health", "description": "Urban Sports Club membership" },
+    { "category": "family", "description": "30 days paid vacation plus flexible parental leave top-up" }
+  ],
+  "team": {
+    "name": "Analytics Product Team",
+    "size": 4,
+    "reports_to": "Head of Product",
+    "methodology": "scrum",
+    "description": "Cross-functional squad shipping the analytics dashboard used by 2,000+ enterprise customers."
+  },
+  "process": {
+    "stages": [
+      { "name": "Hiring manager screen", "type": "screening", "duration_minutes": 30 },
+      { "name": "Product case study", "type": "case_study", "duration_minutes": 60 },
+      { "name": "Team meet & greet", "type": "behavioral", "duration_minutes": 45 },
+      { "name": "Offer", "type": "offer", "duration_minutes": 30 }
+    ],
+    "total_duration_days": 10,
+    "decision_timeline": "Within 5 business days after final round",
+    "application_url": "https://dataflow.example.com/careers/pm",
+    "accepts_otp_profile": true,
+    "ai_screening": false
+  },
+  "culture": {
+    "values": ["Customer obsession", "Data-driven decisions", "Ship fast, learn faster"],
+    "work_style": ["remote-first", "async-friendly", "weekly-demos"]
+  },
+  "source": {
+    "agent_id": "dataflow-careers-bot",
+    "platform": "greenhouse"
+  }
+}

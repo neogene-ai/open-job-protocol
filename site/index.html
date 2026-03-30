@@ -18,10 +18,16 @@
      Top navigation
      ============================================================ -->
 <nav class="top-nav">
-  <a href="#" class="nav-brand">
+  <div class="nav-brand">
     <span class="nav-brand-name">Open Job Protocol</span>
-    <span class="nav-version">v0.1</span>
-  </a>
+    <div class="version-dropdown">
+      <button class="nav-version" aria-haspopup="true" aria-expanded="false">v0.2 <svg class="version-chevron" width="10" height="6" viewBox="0 0 10 6" fill="currentColor"><path d="M1 1l4 4 4-4"/></svg></button>
+      <ul class="version-menu">
+        <li><a href="v0.1.html">v0.1</a></li>
+        <li><a href="./" class="version-current">v0.2 <span class="version-latest">latest</span></a></li>
+      </ul>
+    </div>
+  </div>
   <ul class="nav-links">
     <li><a href="#overview">Overview</a></li>
     <li><a href="#schema">Schema</a></li>
@@ -52,16 +58,17 @@
     <div class="sidebar-section">
       <div class="sidebar-label">Schema</div>
       <ul class="sidebar-nav">
-        <li><a href="#meta">meta</a></li>
-        <li><a href="#role">role</a></li>
+        <li><a href="#top-level">Top-level fields</a></li>
         <li><a href="#organization">organization</a></li>
-        <li><a href="#requirements">requirements</a></li>
-        <li><a href="#offering">offering</a></li>
+        <li><a href="#location">location</a></li>
+        <li><a href="#salary-band">salary_band</a></li>
+        <li><a href="#must-have">must_have</a></li>
+        <li><a href="#nice-to-have">nice_to_have</a></li>
+        <li><a href="#benefits">benefits</a></li>
         <li><a href="#team">team</a></li>
         <li><a href="#process">process</a></li>
         <li><a href="#culture">culture</a></li>
-        <li><a href="#visibility">visibility</a></li>
-        <li><a href="#extensions">extensions</a></li>
+        <li><a href="#source">source</a></li>
       </ul>
     </div>
     <div class="sidebar-section">
@@ -77,6 +84,7 @@
         <li><a href="#examples">Examples</a></li>
         <li><a href="#tools">Tools &amp; validator</a></li>
         <li><a href="#migration">Migration guides</a></li>
+        <li><a href="#ecosystem">Ecosystem</a></li>
         <li><a href="#governance">Governance</a></li>
       </ul>
     </div>
@@ -90,15 +98,16 @@
          Hero
          ====================================================== -->
     <section class="hero" id="overview">
-      <span class="hero-eyebrow">Open Standard &middot; MIT License &middot; v0.1</span>
+      <span class="hero-eyebrow">Open Standard &middot; MIT License &middot; v0.2</span>
       <h1>Open Job Protocol</h1>
       <p class="hero-tagline">
         A machine-first, vendor-neutral JSON standard for job opportunities &mdash;
-        designed for employers, agents, and the agentic talent marketplaces of tomorrow.
-        The counterpart to <a href="https://opentalentprotocol.org" target="_blank" rel="noopener">Open Talent Protocol</a>.
+        with flat, agent-optimized fields aligned with
+        <a href="https://opentalentprotocol.org" target="_blank" rel="noopener">OTP&nbsp;v0.2</a>
+        for bilateral matching.
       </p>
       <div class="hero-actions">
-        <a href="https://github.com/neogene-ai/open-job-protocol/blob/main/schema/openjob-protocol.schema.json"
+        <a href="https://github.com/neogene-ai/open-job-protocol/blob/main/schema/v0.2/ojp.schema.json"
            class="btn btn-primary" target="_blank" rel="noopener">View schema</a>
         <a href="https://github.com/neogene-ai/open-job-protocol"
            class="btn btn-outline" target="_blank" rel="noopener">GitHub repository</a>
@@ -121,9 +130,13 @@
       </p>
 
       <p>
-        Open Job Protocol (OJP) fixes this. It encodes requirements with hard/soft
-        distinctions agents can filter on, compensation and location as structured fields,
-        and hiring process transparency so candidates know what to expect.
+        Open Job Protocol (OJP) fixes this. v0.2 restructures postings into
+        <strong>flat, snake_case top-level fields</strong> with strict <code>additionalProperties: false</code>,
+        direct alignment with <a href="https://opentalentprotocol.org" target="_blank" rel="noopener">OTP&nbsp;v0.2</a>
+        field names, and ESCO taxonomy support for skills. OJP is the employer half of a bilateral ecosystem &mdash;
+        its companion standard, the
+        <a href="https://opentalentprotocol.org" target="_blank" rel="noopener">Open Talent Protocol</a>,
+        handles the candidate and profile side.
       </p>
 
       <table class="prop-table" style="margin-top:1.25rem">
@@ -136,19 +149,19 @@
         <tbody>
           <tr>
             <td class="prop-name">Machine-first</td>
-            <td class="prop-desc">JSON is the canonical format. Rendering to career pages or PDFs is a downstream concern.</td>
+            <td class="prop-desc">JSON is the canonical format. Flat top-level fields, snake_case keys, and strict <code>additionalProperties: false</code> for reliable parsing.</td>
           </tr>
           <tr>
             <td class="prop-name">Employer-controlled</td>
-            <td class="prop-desc">The <code>visibility</code> section lets employers decide what to share publicly vs. after application.</td>
+            <td class="prop-desc"><code>salary_transparency</code> lets employers decide when to disclose compensation. No data is shared without explicit intent.</td>
           </tr>
           <tr>
             <td class="prop-name">Agent-ready</td>
-            <td class="prop-desc"><code>requirements</code> split into <code>must_have</code> and <code>nice_to_have</code> &mdash; agents filter on hard constraints, rank on soft ones.</td>
+            <td class="prop-desc"><code>must_have</code> and <code>nice_to_have</code> are structured objects agents can filter and rank on &mdash; not prose to be parsed.</td>
           </tr>
           <tr>
-            <td class="prop-name">OTP-complementary</td>
-            <td class="prop-desc">Fields map directly to <a href="https://opentalentprotocol.org" target="_blank" rel="noopener">Open Talent Protocol</a> for bilateral matching.</td>
+            <td class="prop-name">OTP-aligned</td>
+            <td class="prop-desc">Field names map directly to <a href="https://opentalentprotocol.org" target="_blank" rel="noopener">OTP&nbsp;v0.2</a> &mdash; <code>salary_band</code>, <code>seniority</code>, skill <code>level</code>, and CEFR language proficiencies match exactly.</td>
           </tr>
           <tr>
             <td class="prop-name">Vendor-neutral</td>
@@ -156,7 +169,7 @@
           </tr>
           <tr>
             <td class="prop-name">Interoperable</td>
-            <td class="prop-desc">Mappable to schema.org/JobPosting, Google for Jobs, LinkedIn Job Posting API, and HR-XML.</td>
+            <td class="prop-desc">Mappable to schema.org/JobPosting, Google for Jobs, LinkedIn Job Posting API, and HR-XML. Full v0.1 migration guide included.</td>
           </tr>
         </tbody>
       </table>
@@ -177,44 +190,28 @@ git clone https://github.com/neogene-ai/open-job-protocol.git
 cd open-job-protocol/tools/validator-cli
 npm install &amp;&amp; npm run build
 
-<span class="json-punct"># Validate one of the example documents</span>
-node dist/index.js ../../examples/backend-engineer-senior.json
-<span class="json-punct">&check; Valid Open Job Protocol document</span>
+<span class="json-punct"># Validate one of the v0.2 example documents</span>
+node dist/index.js ../../examples/v0.2/backend-engineer-senior.json
+<span class="json-punct">&#x2713; Valid Open Job Protocol document</span>
 </pre>
 
       <h3>Minimal valid document</h3>
-      <p>Only <code>meta</code>, <code>role</code>, <code>organization</code>, <code>requirements.must_have.skills</code>, and <code>offering.location.arrangement</code> are required. Everything else is optional.</p>
+      <p>
+        A valid v0.2 document needs only the 10 required top-level fields.
+        Everything else &mdash; salary, requirements, team, process &mdash; is optional.
+      </p>
 <pre>
 {
-  <span class="json-key">"$schema"</span>: <span class="json-str">"https://openjobprotocol.org/schema/v0.1.json"</span>,
-  <span class="json-key">"meta"</span>: {
-    <span class="json-key">"version"</span>: <span class="json-str">"0.1"</span>,
-    <span class="json-key">"job_id"</span>: <span class="json-str">"acme-fe-2026-001"</span>,
-    <span class="json-key">"status"</span>: <span class="json-str">"ACTIVE"</span>,
-    <span class="json-key">"created_at"</span>: <span class="json-str">"2026-02-21T10:00:00Z"</span>,
-    <span class="json-key">"updated_at"</span>: <span class="json-str">"2026-02-21T10:00:00Z"</span>
-  },
-  <span class="json-key">"role"</span>: {
-    <span class="json-key">"title"</span>: <span class="json-str">"Senior Frontend Engineer"</span>,
-    <span class="json-key">"description"</span>: <span class="json-str">"Build and maintain our React-based product..."</span>,
-    <span class="json-key">"employment_type"</span>: <span class="json-str">"full_time"</span>
-  },
-  <span class="json-key">"organization"</span>: {
-    <span class="json-key">"name"</span>: <span class="json-str">"Acme Corp"</span>
-  },
-  <span class="json-key">"requirements"</span>: {
-    <span class="json-key">"must_have"</span>: {
-      <span class="json-key">"skills"</span>: [
-        { <span class="json-key">"name"</span>: <span class="json-str">"React"</span> },
-        { <span class="json-key">"name"</span>: <span class="json-str">"TypeScript"</span> }
-      ]
-    }
-  },
-  <span class="json-key">"offering"</span>: {
-    <span class="json-key">"location"</span>: {
-      <span class="json-key">"arrangement"</span>: <span class="json-str">"hybrid"</span>
-    }
-  }
+  <span class="json-key">"schema_version"</span>: <span class="json-str">"0.2.0"</span>,
+  <span class="json-key">"ojp_id"</span>: <span class="json-str">"a1b2c3d4-e5f6-7890-abcd-ef1234567890"</span>,
+  <span class="json-key">"created_at"</span>: <span class="json-str">"2026-03-30T10:00:00Z"</span>,
+  <span class="json-key">"updated_at"</span>: <span class="json-str">"2026-03-30T10:00:00Z"</span>,
+  <span class="json-key">"status"</span>: <span class="json-str">"active"</span>,
+  <span class="json-key">"title"</span>: <span class="json-str">"Senior Frontend Engineer"</span>,
+  <span class="json-key">"description"</span>: <span class="json-str">"Build and maintain our React-based product..."</span>,
+  <span class="json-key">"employment_type"</span>: <span class="json-str">"full_time"</span>,
+  <span class="json-key">"organization"</span>: { <span class="json-key">"name"</span>: <span class="json-str">"Acme Corp"</span> },
+  <span class="json-key">"location"</span>: { <span class="json-key">"arrangement"</span>: <span class="json-str">"hybrid"</span> }
 }
 </pre>
     </section>
@@ -227,132 +224,153 @@ node dist/index.js ../../examples/backend-engineer-senior.json
       <hr class="section-divider" />
       <p>
         The full schema is a JSON Schema (draft 2020-12) document at
-        <a href="https://github.com/neogene-ai/open-job-protocol/blob/main/schema/openjob-protocol.schema.json"
-           target="_blank" rel="noopener"><code>schema/openjob-protocol.schema.json</code></a>.
+        <a href="https://github.com/neogene-ai/open-job-protocol/blob/main/schema/v0.2/ojp.schema.json"
+           target="_blank" rel="noopener"><code>schema/v0.2/ojp.schema.json</code></a>.
         Below, each section is documented with its fields, types, and intent.
       </p>
 
       <div class="callout">
-        <strong>Coverage:</strong> The schema covers all 46 fields from the
-        <a href="https://schema.org/JobPosting" target="_blank" rel="noopener">schema.org/JobPosting</a>,
-        Google for Jobs, LinkedIn API, and HR-XML cross-reference model, plus 19 agent-first
-        extensions for a total of 65 distinct fields.
+        <strong>Looking for v0.1?</strong> The
+        <a href="https://github.com/neogene-ai/open-job-protocol/blob/main/schema/openjob-protocol.schema.json"
+           target="_blank" rel="noopener">v0.1 schema</a>
+        remains available. See the
+        <a href="https://github.com/neogene-ai/open-job-protocol/blob/main/docs/v0.2-migration.md"
+           target="_blank" rel="noopener">v0.1 &rarr; v0.2 migration guide</a>
+        for a full field mapping.
       </div>
     </section>
 
-    <!-- ---- meta ------------------------------------------- -->
-    <section class="spec-section" id="meta">
+    <!-- ---- top-level fields --------------------------------- -->
+    <section class="spec-section" id="top-level">
       <div class="section-meta">
-        <h2>meta</h2>
+        <h2>Top-level fields</h2>
         <span class="badge badge-required">required</span>
       </div>
-      <p>Identifiers and lifecycle metadata for tracking, deduplication, and expiration across ATS platforms and job boards.</p>
+      <p>Every OJP v0.2 document must include these 10 required fields.</p>
+
       <table class="prop-table">
         <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
         <tbody>
           <tr>
-            <td class="prop-name">version</td>
+            <td class="prop-name">schema_version</td>
             <td class="prop-type">string</td>
             <td class="prop-req req-yes">yes</td>
-            <td class="prop-desc">Must be <code>"0.1"</code>. Used by parsers to select the correct validation rules.</td>
+            <td class="prop-desc">Must be <code>"0.2.0"</code>.</td>
           </tr>
           <tr>
-            <td class="prop-name">job_id</td>
-            <td class="prop-type">string</td>
+            <td class="prop-name">ojp_id</td>
+            <td class="prop-type">uuid</td>
             <td class="prop-req req-yes">yes</td>
-            <td class="prop-desc">Globally unique job identifier (URI, UUID, or requisition ID). Maps to schema.org <code>identifier</code>.</td>
+            <td class="prop-desc">Unique job posting identifier.</td>
+          </tr>
+          <tr>
+            <td class="prop-name">created_at</td>
+            <td class="prop-type">date-time</td>
+            <td class="prop-req req-yes">yes</td>
+            <td class="prop-desc">Posting creation timestamp (ISO 8601).</td>
+          </tr>
+          <tr>
+            <td class="prop-name">updated_at</td>
+            <td class="prop-type">date-time</td>
+            <td class="prop-req req-yes">yes</td>
+            <td class="prop-desc">Last modification timestamp (ISO 8601).</td>
           </tr>
           <tr>
             <td class="prop-name">status</td>
             <td class="prop-type">enum</td>
             <td class="prop-req req-yes">yes</td>
             <td class="prop-desc">
-              Current posting state:
+              Lifecycle status:
               <div class="enum-list">
-                <span class="enum-val">DRAFT</span><span class="enum-val">ACTIVE</span><span class="enum-val">PAUSED</span>
-                <span class="enum-val">CLOSED</span><span class="enum-val">EXPIRED</span><span class="enum-val">FILLED</span>
+                <span class="enum-val">draft</span><span class="enum-val">active</span><span class="enum-val">paused</span>
+                <span class="enum-val">closed</span><span class="enum-val">expired</span><span class="enum-val">filled</span>
               </div>
             </td>
           </tr>
           <tr>
-            <td class="prop-name">created_at</td>
-            <td class="prop-type">date-time</td>
-            <td class="prop-req req-yes">yes</td>
-            <td class="prop-desc">When the posting was first published. Maps to schema.org <code>datePosted</code>.</td>
-          </tr>
-          <tr>
-            <td class="prop-name">updated_at</td>
-            <td class="prop-type">date-time</td>
-            <td class="prop-req req-yes">yes</td>
-            <td class="prop-desc">Last modification timestamp.</td>
-          </tr>
-          <tr>
-            <td class="prop-name">valid_through</td>
-            <td class="prop-type">date-time</td>
-            <td class="prop-req req-no">no</td>
-            <td class="prop-desc">Posting expiration date. Maps to schema.org <code>validThrough</code>.</td>
-          </tr>
-          <tr>
-            <td class="prop-name">source</td>
+            <td class="prop-name">title</td>
             <td class="prop-type">string</td>
-            <td class="prop-req req-no">no</td>
-            <td class="prop-desc">Origin ATS or system (e.g. <code>"lever"</code>, <code>"greenhouse"</code>, <code>"direct"</code>).</td>
+            <td class="prop-req req-yes">yes</td>
+            <td class="prop-desc">Job title (max 200).</td>
           </tr>
           <tr>
-            <td class="prop-name">source_url</td>
-            <td class="prop-type">uri</td>
-            <td class="prop-req req-no">no</td>
-            <td class="prop-desc">Canonical URL of the posting. Maps to schema.org <code>url</code>.</td>
-          </tr>
-          <tr>
-            <td class="prop-name">locale</td>
+            <td class="prop-name">description</td>
             <td class="prop-type">string</td>
-            <td class="prop-req req-no">no</td>
-            <td class="prop-desc">BCP 47 language tag. Default: <code>"en"</code>.</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- ---- role --------------------------------------------- -->
-    <section class="spec-section" id="role">
-      <div class="section-meta">
-        <h2>role</h2>
-        <span class="badge badge-required">required</span>
-      </div>
-      <p>The substantive content of the job posting &mdash; what the role is and what it involves.</p>
-      <table class="prop-table">
-        <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
-        <tbody>
-          <tr><td class="prop-name">title</td><td class="prop-type">string</td><td class="prop-req req-yes">yes</td><td class="prop-desc">Job title. Maps to schema.org <code>title</code>.</td></tr>
-          <tr><td class="prop-name">description</td><td class="prop-type">string</td><td class="prop-req req-yes">yes</td><td class="prop-desc">Full job description (markdown). Maps to schema.org <code>description</code>.</td></tr>
-          <tr><td class="prop-name">role_summary</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">1&ndash;3 sentence agent-optimized summary for quick screening.</td></tr>
-          <tr><td class="prop-name">function</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Standardized function (e.g. <code>"Engineering"</code>, <code>"Sales"</code>). Maps to schema.org <code>occupationalCategory</code>.</td></tr>
-          <tr>
-            <td class="prop-name">seniority</td><td class="prop-type">enum</td><td class="prop-req req-no">no</td>
-            <td class="prop-desc">
-              <div class="enum-list">
-                <span class="enum-val">intern</span><span class="enum-val">junior</span><span class="enum-val">mid</span>
-                <span class="enum-val">senior</span><span class="enum-val">staff</span><span class="enum-val">principal</span>
-                <span class="enum-val">lead</span><span class="enum-val">director</span><span class="enum-val">vp</span><span class="enum-val">c_level</span>
-              </div>
-            </td>
+            <td class="prop-req req-yes">yes</td>
+            <td class="prop-desc">Full role description (max 5000).</td>
           </tr>
           <tr>
-            <td class="prop-name">employment_type</td><td class="prop-type">enum</td><td class="prop-req req-yes">yes</td>
+            <td class="prop-name">employment_type</td>
+            <td class="prop-type">enum</td>
+            <td class="prop-req req-yes">yes</td>
             <td class="prop-desc">
               <div class="enum-list">
                 <span class="enum-val">full_time</span><span class="enum-val">part_time</span><span class="enum-val">contract</span>
                 <span class="enum-val">freelance</span><span class="enum-val">internship</span><span class="enum-val">temporary</span>
               </div>
-              Maps to schema.org <code>employmentType</code>.
             </td>
           </tr>
-          <tr><td class="prop-name">total_openings</td><td class="prop-type">integer</td><td class="prop-req req-no">no</td><td class="prop-desc">Number of positions. Maps to schema.org <code>totalJobOpenings</code>.</td></tr>
-          <tr><td class="prop-name">responsibilities</td><td class="prop-type">string[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Key responsibilities (&le;7 items recommended). Maps to schema.org <code>responsibilities</code>.</td></tr>
-          <tr><td class="prop-name">work_hours</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Working hours description. Maps to schema.org <code>workHours</code>.</td></tr>
-          <tr><td class="prop-name">job_start_date</td><td class="prop-type">date</td><td class="prop-req req-no">no</td><td class="prop-desc">Expected start date. Maps to schema.org <code>jobStartDate</code>.</td></tr>
-          <tr><td class="prop-name">immediate_start</td><td class="prop-type">boolean</td><td class="prop-req req-no">no</td><td class="prop-desc">Position available immediately. Maps to schema.org <code>jobImmediateStart</code>.</td></tr>
+          <tr>
+            <td class="prop-name">organization</td>
+            <td class="prop-type">object</td>
+            <td class="prop-req req-yes">yes</td>
+            <td class="prop-desc">Hiring entity. See <a href="#organization">organization</a>.</td>
+          </tr>
+          <tr>
+            <td class="prop-name">location</td>
+            <td class="prop-type">object</td>
+            <td class="prop-req req-yes">yes</td>
+            <td class="prop-desc">Work location and arrangement. See <a href="#location">location</a>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Optional top-level fields</h3>
+      <table class="prop-table">
+        <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="prop-name">valid_through</td>
+            <td class="prop-type">date</td>
+            <td class="prop-desc">Posting expiration date.</td>
+          </tr>
+          <tr>
+            <td class="prop-name">summary</td>
+            <td class="prop-type">string</td>
+            <td class="prop-desc">One-paragraph agent-optimized role summary (max 500).</td>
+          </tr>
+          <tr>
+            <td class="prop-name">seniority</td>
+            <td class="prop-type">enum</td>
+            <td class="prop-desc">
+              Matches OTP <code>seniority</code> exactly:
+              <div class="enum-list">
+                <span class="enum-val">intern</span><span class="enum-val">junior</span><span class="enum-val">mid</span>
+                <span class="enum-val">senior</span><span class="enum-val">staff</span><span class="enum-val">lead</span>
+                <span class="enum-val">principal</span><span class="enum-val">director</span><span class="enum-val">vp</span><span class="enum-val">c_level</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="prop-name">function</td>
+            <td class="prop-type">string</td>
+            <td class="prop-desc">Organizational function (max 100). E.g. <code>"Engineering"</code>, <code>"Sales"</code>.</td>
+          </tr>
+          <tr>
+            <td class="prop-name">total_openings</td>
+            <td class="prop-type">integer</td>
+            <td class="prop-desc">Number of open positions (min 1).</td>
+          </tr>
+          <tr>
+            <td class="prop-name">salary_transparency</td>
+            <td class="prop-type">enum</td>
+            <td class="prop-desc">
+              When salary is disclosed:
+              <div class="enum-list">
+                <span class="enum-val">public</span><span class="enum-val">on_request</span><span class="enum-val">after_interview</span>
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
     </section>
@@ -363,162 +381,158 @@ node dist/index.js ../../examples/backend-engineer-senior.json
         <h2>organization</h2>
         <span class="badge badge-required">required</span>
       </div>
-      <p>The hiring entity. Only <code>name</code> is required within this section.</p>
+      <p>The hiring entity. Only <code>name</code> is required within this object.</p>
       <table class="prop-table">
         <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
         <tbody>
-          <tr><td class="prop-name">name</td><td class="prop-type">string</td><td class="prop-req req-yes">yes</td><td class="prop-desc">Company name. Maps to schema.org <code>hiringOrganization.name</code>.</td></tr>
+          <tr><td class="prop-name">name</td><td class="prop-type">string</td><td class="prop-req req-yes">yes</td><td class="prop-desc">Company name (max 200).</td></tr>
           <tr><td class="prop-name">url</td><td class="prop-type">uri</td><td class="prop-req req-no">no</td><td class="prop-desc">Company website.</td></tr>
-          <tr><td class="prop-name">logo_url</td><td class="prop-type">uri</td><td class="prop-req req-no">no</td><td class="prop-desc">Company logo image URL.</td></tr>
-          <tr><td class="prop-name">industry</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Primary industry (NAICS code or free-text). Maps to schema.org <code>industry</code>.</td></tr>
+          <tr><td class="prop-name">industry</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Primary industry (max 100).</td></tr>
           <tr>
             <td class="prop-name">size</td><td class="prop-type">enum</td><td class="prop-req req-no">no</td>
             <td class="prop-desc">
+              Matches OTP <code>preferences.company_size</code>:
               <div class="enum-list">
                 <span class="enum-val">startup</span><span class="enum-val">scale_up</span><span class="enum-val">mid_market</span><span class="enum-val">enterprise</span>
               </div>
             </td>
           </tr>
-          <tr><td class="prop-name">department</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Hiring department or division. Maps to schema.org <code>employmentUnit</code>.</td></tr>
-          <tr><td class="prop-name">founded</td><td class="prop-type">integer</td><td class="prop-req req-no">no</td><td class="prop-desc">Year founded.</td></tr>
-          <tr><td class="prop-name">headquarters</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">HQ location.</td></tr>
+          <tr><td class="prop-name">department</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Hiring department (max 100).</td></tr>
+          <tr><td class="prop-name">headquarters</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">HQ location (max 200).</td></tr>
         </tbody>
       </table>
     </section>
 
-    <!-- ---- requirements ------------------------------------- -->
-    <section class="spec-section" id="requirements">
+    <!-- ---- location ----------------------------------------- -->
+    <section class="spec-section" id="location">
       <div class="section-meta">
-        <h2>requirements</h2>
-        <span class="badge badge-required">required</span>
-        <span class="badge badge-new">agent-critical</span>
-      </div>
-
-      <p>
-        Split into <code>must_have</code> (hard constraints agents MUST filter on) and
-        <code>nice_to_have</code> (soft preferences agents SHOULD rank on). This distinction
-        is the key differentiator from schema.org and existing standards.
-      </p>
-
-      <div class="callout">
-        <strong>Design note:</strong> An OJP-compliant agent must not present a candidate
-        who fails any <code>must_have</code> constraint. This is a hard rule, not a hint.
-      </div>
-
-      <h3>must_have</h3>
-      <table class="prop-table">
-        <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
-        <tbody>
-          <tr><td class="prop-name">skills</td><td class="prop-type">skill[]</td><td class="prop-req req-yes">yes</td><td class="prop-desc">Required skills. Each: <code>name</code> (required), <code>min_years</code>, <code>taxonomy</code> (<code>"esco"</code> | <code>"onet"</code>), <code>taxonomy_id</code>.</td></tr>
-          <tr><td class="prop-name">experience_years</td><td class="prop-type">object</td><td class="prop-req req-no">no</td><td class="prop-desc"><code>min</code> and optional <code>max</code>. Maps to schema.org <code>experienceRequirements</code>.</td></tr>
-          <tr><td class="prop-name">credentials</td><td class="prop-type">credential[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Required degrees. Each: <code>type</code>, <code>field</code>, <code>level</code>. Maps to schema.org <code>educationRequirements</code>.</td></tr>
-          <tr><td class="prop-name">certifications</td><td class="prop-type">string[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Required professional certifications (e.g. <code>"PMP"</code>, <code>"AWS CCP"</code>).</td></tr>
-          <tr>
-            <td class="prop-name">languages</td><td class="prop-type">lang[]</td><td class="prop-req req-no">no</td>
-            <td class="prop-desc">Each: <code>language</code> (BCP 47), <code>proficiency</code>:
-              <div class="enum-list">
-                <span class="enum-val">basic</span><span class="enum-val">conversational</span><span class="enum-val">professional</span><span class="enum-val">native</span>
-              </div>
-            </td>
-          </tr>
-          <tr><td class="prop-name">legal.work_authorization</td><td class="prop-type">string[]</td><td class="prop-req req-no">no</td><td class="prop-desc">ISO country/region codes. Maps to schema.org <code>eligibilityToWorkRequirement</code>.</td></tr>
-          <tr><td class="prop-name">legal.security_clearance</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Clearance level required. Maps to schema.org <code>securityClearanceRequirement</code>.</td></tr>
-          <tr><td class="prop-name">legal.physical_requirements</td><td class="prop-type">string[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Physical demands. Maps to schema.org <code>physicalRequirement</code>.</td></tr>
-        </tbody>
-      </table>
-
-      <h3>nice_to_have</h3>
-      <table class="prop-table">
-        <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
-        <tbody>
-          <tr><td class="prop-name">skills</td><td class="prop-type">skill[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Preferred additional skills (same shape as must_have skills).</td></tr>
-          <tr><td class="prop-name">experience_years</td><td class="prop-type">object</td><td class="prop-req req-no">no</td><td class="prop-desc"><code>preferred</code> years of experience.</td></tr>
-          <tr><td class="prop-name">credentials</td><td class="prop-type">credential[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Preferred qualifications. Maps to schema.org <code>qualifications</code>.</td></tr>
-          <tr><td class="prop-name">experience_in_place_of_education</td><td class="prop-type">boolean</td><td class="prop-req req-no">no</td><td class="prop-desc">Whether experience can substitute for a degree. Maps to schema.org <code>experienceInPlaceOfEducation</code>.</td></tr>
-          <tr><td class="prop-name">preferred_qualifications</td><td class="prop-type">string[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Freeform preferred qualifications.</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- ---- offering ----------------------------------------- -->
-    <section class="spec-section" id="offering">
-      <div class="section-meta">
-        <h2>offering</h2>
+        <h2>location</h2>
         <span class="badge badge-required">required</span>
       </div>
-      <p>What the employer provides: compensation, location, benefits, and growth opportunities. At minimum, <code>location.arrangement</code> is required.</p>
-
-      <h3>offering.compensation</h3>
-      <table class="prop-table">
-        <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
-        <tbody>
-          <tr><td class="prop-name">salary</td><td class="prop-type">object</td><td class="prop-req req-no">no</td><td class="prop-desc"><code>min</code>, <code>max</code>, <code>currency</code> (ISO 4217), <code>period</code> (hourly | daily | weekly | monthly | annual). Maps to schema.org <code>baseSalary</code>.</td></tr>
-          <tr>
-            <td class="prop-name">additional_compensation</td><td class="prop-type">array</td><td class="prop-req req-no">no</td>
-            <td class="prop-desc">Each: <code>type</code> and <code>description</code>. Types:
-              <div class="enum-list">
-                <span class="enum-val">bonus</span><span class="enum-val">commission</span><span class="enum-val">equity</span>
-                <span class="enum-val">tips</span><span class="enum-val">signing_bonus</span>
-              </div>
-              Maps to schema.org <code>incentiveCompensation</code>.
-            </td>
-          </tr>
-          <tr>
-            <td class="prop-name">transparency</td><td class="prop-type">enum</td><td class="prop-req req-no">no</td>
-            <td class="prop-desc">
-              <div class="enum-list">
-                <span class="enum-val">public</span><span class="enum-val">on_request</span><span class="enum-val">after_interview</span>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>offering.location</h3>
+      <p>Work location and arrangement. Only <code>arrangement</code> is required.</p>
       <table class="prop-table">
         <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
         <tbody>
           <tr>
             <td class="prop-name">arrangement</td><td class="prop-type">enum</td><td class="prop-req req-yes">yes</td>
             <td class="prop-desc">
+              Matches OTP <code>work_model</code>:
               <div class="enum-list">
-                <span class="enum-val">remote</span><span class="enum-val">hybrid</span><span class="enum-val">onsite</span>
+                <span class="enum-val">onsite</span><span class="enum-val">hybrid</span><span class="enum-val">remote</span>
               </div>
-              Maps to schema.org <code>jobLocationType</code>.
             </td>
           </tr>
-          <tr><td class="prop-name">primary_location</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Primary work location. Maps to schema.org <code>jobLocation</code>.</td></tr>
-          <tr><td class="prop-name">alternate_locations</td><td class="prop-type">string[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Additional office locations.</td></tr>
-          <tr><td class="prop-name">remote_regions</td><td class="prop-type">string[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Eligible remote regions (ISO codes). Maps to schema.org <code>applicantLocationRequirements</code>.</td></tr>
+          <tr><td class="prop-name">country</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">ISO 3166-1 alpha-2. Matches OTP <code>location.country</code>.</td></tr>
+          <tr><td class="prop-name">city</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">City name (max 100).</td></tr>
+          <tr><td class="prop-name">region</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">State or region (max 100).</td></tr>
+          <tr><td class="prop-name">remote_regions</td><td class="prop-type">string[]</td><td class="prop-req req-no">no</td><td class="prop-desc">ISO 3166-1 alpha-2 country codes for remote eligibility.</td></tr>
           <tr><td class="prop-name">relocation_support</td><td class="prop-type">boolean</td><td class="prop-req req-no">no</td><td class="prop-desc">Whether relocation assistance is offered.</td></tr>
           <tr><td class="prop-name">visa_sponsorship</td><td class="prop-type">boolean</td><td class="prop-req req-no">no</td><td class="prop-desc">Whether visa sponsorship is available.</td></tr>
         </tbody>
       </table>
+    </section>
 
-      <h3>offering.benefits</h3>
+    <!-- ---- salary_band -------------------------------------- -->
+    <section class="spec-section" id="salary-band">
+      <div class="section-meta">
+        <h2>salary_band</h2>
+        <span class="badge badge-optional">optional</span>
+      </div>
+      <p>Compensation range. Same structure as OTP <code>salary_band</code> for bilateral matching.</p>
       <table class="prop-table">
         <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
         <tbody>
+          <tr><td class="prop-name">min</td><td class="prop-type">number</td><td class="prop-req req-yes">yes</td><td class="prop-desc">Minimum salary.</td></tr>
+          <tr><td class="prop-name">max</td><td class="prop-type">number</td><td class="prop-req req-yes">yes</td><td class="prop-desc">Maximum salary.</td></tr>
+          <tr><td class="prop-name">currency</td><td class="prop-type">string</td><td class="prop-req req-yes">yes</td><td class="prop-desc">ISO 4217 currency code (e.g. <code>"EUR"</code>, <code>"USD"</code>).</td></tr>
           <tr>
-            <td class="prop-name">benefits</td><td class="prop-type">benefit[]</td><td class="prop-req req-no">no</td>
-            <td class="prop-desc">Each: <code>category</code> and <code>detail</code>. Categories:
+            <td class="prop-name">period</td><td class="prop-type">enum</td><td class="prop-req req-yes">yes</td>
+            <td class="prop-desc">
               <div class="enum-list">
-                <span class="enum-val">health</span><span class="enum-val">retirement</span><span class="enum-val">development</span>
-                <span class="enum-val">flexibility</span><span class="enum-val">family</span><span class="enum-val">financial</span><span class="enum-val">other</span>
+                <span class="enum-val">annual</span><span class="enum-val">monthly</span><span class="enum-val">daily</span><span class="enum-val">hourly</span>
               </div>
-              Maps to schema.org <code>jobBenefits</code>.
             </td>
           </tr>
         </tbody>
       </table>
+    </section>
 
-      <h3>offering.growth</h3>
+    <!-- ---- must_have ---------------------------------------- -->
+    <section class="spec-section" id="must-have">
+      <div class="section-meta">
+        <h2>must_have</h2>
+        <span class="badge badge-optional">optional</span>
+        <span class="badge badge-new">agent-critical</span>
+      </div>
+      <p>
+        Hard requirements &mdash; candidates must meet all of these.
+        An OJP-compliant agent must not present a candidate who fails any <code>must_have</code> constraint.
+      </p>
+      <table class="prop-table">
+        <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="prop-name">skills</td><td class="prop-type">skill_requirement[]</td><td class="prop-desc">Each: <code>name</code> (required), <code>min_level</code> (1&ndash;5, maps to OTP <code>skills[].level</code>), <code>min_years</code>, <code>esco_id</code>.</td></tr>
+          <tr><td class="prop-name">experience_years</td><td class="prop-type">object</td><td class="prop-desc"><code>min</code> and optional <code>max</code>.</td></tr>
+          <tr><td class="prop-name">credentials</td><td class="prop-type">string[]</td><td class="prop-desc">Required degrees or qualifications (max 200 each).</td></tr>
+          <tr><td class="prop-name">certifications</td><td class="prop-type">string[]</td><td class="prop-desc">Required certifications (max 200 each). E.g. <code>"CKA"</code>, <code>"ACLS"</code>.</td></tr>
+          <tr><td class="prop-name">languages</td><td class="prop-type">language_requirement[]</td>
+            <td class="prop-desc">Each: <code>language</code> (ISO 639-1), <code>proficiency</code> (CEFR):
+              <div class="enum-list">
+                <span class="enum-val">A1</span><span class="enum-val">A2</span><span class="enum-val">B1</span><span class="enum-val">B2</span><span class="enum-val">C1</span><span class="enum-val">C2</span><span class="enum-val">native</span>
+              </div>
+              Matches OTP <code>languages[].proficiency</code> exactly.
+            </td>
+          </tr>
+          <tr><td class="prop-name">work_authorization</td><td class="prop-type">string[]</td><td class="prop-desc">ISO 3166-1 alpha-2 country codes. Matches OTP <code>visa_status.authorized_countries</code>.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ---- nice_to_have ------------------------------------- -->
+    <section class="spec-section" id="nice-to-have">
+      <div class="section-meta">
+        <h2>nice_to_have</h2>
+        <span class="badge badge-optional">optional</span>
+      </div>
+      <p>Preferred qualifications &mdash; bonus scoring, not hard filters.</p>
+      <table class="prop-table">
+        <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td class="prop-name">skills</td><td class="prop-type">skill_requirement[]</td><td class="prop-desc">Same shape as <code>must_have.skills</code>.</td></tr>
+          <tr><td class="prop-name">experience_years</td><td class="prop-type">object</td><td class="prop-desc"><code>preferred</code> years.</td></tr>
+          <tr><td class="prop-name">credentials</td><td class="prop-type">string[]</td><td class="prop-desc">Preferred qualifications.</td></tr>
+          <tr><td class="prop-name">certifications</td><td class="prop-type">string[]</td><td class="prop-desc">Preferred certifications.</td></tr>
+          <tr><td class="prop-name">languages</td><td class="prop-type">language_requirement[]</td><td class="prop-desc">Same shape as <code>must_have.languages</code>.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <strong>Design note:</strong> The <code>must_have</code> / <code>nice_to_have</code> split is the key agent differentiator.
+        An OJP-compliant agent must treat <code>must_have</code> as a hard filter and <code>nice_to_have</code> as ranking signal.
+        This is a hard rule, not a hint.
+      </div>
+    </section>
+
+    <!-- ---- benefits ----------------------------------------- -->
+    <section class="spec-section" id="benefits">
+      <div class="section-meta">
+        <h2>benefits</h2>
+        <span class="badge badge-optional">optional</span>
+      </div>
+      <p>Array of benefits offered by the employer.</p>
       <table class="prop-table">
         <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
         <tbody>
-          <tr><td class="prop-name">career_path</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Career progression description.</td></tr>
-          <tr><td class="prop-name">mentorship</td><td class="prop-type">boolean</td><td class="prop-req req-no">no</td><td class="prop-desc">Mentorship availability.</td></tr>
-          <tr><td class="prop-name">promotion_cadence</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Review/promotion cycle.</td></tr>
+          <tr>
+            <td class="prop-name">category</td><td class="prop-type">enum</td><td class="prop-req req-yes">yes</td>
+            <td class="prop-desc">
+              <div class="enum-list">
+                <span class="enum-val">health</span><span class="enum-val">retirement</span><span class="enum-val">development</span>
+                <span class="enum-val">flexibility</span><span class="enum-val">family</span><span class="enum-val">financial</span><span class="enum-val">other</span>
+              </div>
+            </td>
+          </tr>
+          <tr><td class="prop-name">description</td><td class="prop-type">string</td><td class="prop-req req-yes">yes</td><td class="prop-desc">Benefit details (max 500).</td></tr>
         </tbody>
       </table>
     </section>
@@ -528,18 +542,17 @@ node dist/index.js ../../examples/backend-engineer-senior.json
       <div class="section-meta">
         <h2>team</h2>
         <span class="badge badge-optional">optional</span>
-        <span class="badge badge-new">OJP extension</span>
       </div>
-      <p>Team composition and context. No equivalent in schema.org &mdash; this is a key OJP differentiator for culture matching.</p>
+      <p>Team composition and context for culture matching.</p>
       <table class="prop-table">
-        <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
+        <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
         <tbody>
-          <tr><td class="prop-name">name</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Team or squad name.</td></tr>
-          <tr><td class="prop-name">size</td><td class="prop-type">integer</td><td class="prop-req req-no">no</td><td class="prop-desc">Current team size.</td></tr>
-          <tr><td class="prop-name">reports_to</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Hiring manager title.</td></tr>
-          <tr><td class="prop-name">tech_stack</td><td class="prop-type">string[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Team's technology stack.</td></tr>
-          <tr><td class="prop-name">methodology</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Work methodology (e.g. <code>"scrum"</code>, <code>"kanban"</code>).</td></tr>
-          <tr><td class="prop-name">description</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Team mission and purpose.</td></tr>
+          <tr><td class="prop-name">name</td><td class="prop-type">string</td><td class="prop-desc">Team or squad name (max 100).</td></tr>
+          <tr><td class="prop-name">size</td><td class="prop-type">integer</td><td class="prop-desc">Current team size.</td></tr>
+          <tr><td class="prop-name">reports_to</td><td class="prop-type">string</td><td class="prop-desc">Hiring manager title (max 200).</td></tr>
+          <tr><td class="prop-name">tech_stack</td><td class="prop-type">string[]</td><td class="prop-desc">Team's technology stack (max 100 each).</td></tr>
+          <tr><td class="prop-name">methodology</td><td class="prop-type">string</td><td class="prop-desc">Work methodology (max 100). E.g. <code>"scrum"</code>, <code>"kanban"</code>.</td></tr>
+          <tr><td class="prop-name">description</td><td class="prop-type">string</td><td class="prop-desc">Team mission and purpose (max 1000).</td></tr>
         </tbody>
       </table>
     </section>
@@ -549,19 +562,25 @@ node dist/index.js ../../examples/backend-engineer-senior.json
       <div class="section-meta">
         <h2>process</h2>
         <span class="badge badge-optional">optional</span>
-        <span class="badge badge-new">OJP extension</span>
       </div>
-      <p>Hiring process transparency &mdash; stages, timeline, and application method. Candidates and agents can use this to set expectations.</p>
+      <p>Hiring process transparency &mdash; stages, timeline, and application method.</p>
       <table class="prop-table">
-        <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
+        <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
         <tbody>
-          <tr><td class="prop-name">stages</td><td class="prop-type">stage[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Each: <code>name</code>, <code>duration_minutes</code>, <code>type</code> (<code>"async"</code> | <code>"call"</code> | <code>"video"</code> | <code>"onsite"</code> | <code>"take_home"</code>).</td></tr>
-          <tr><td class="prop-name">total_duration_days</td><td class="prop-type">integer</td><td class="prop-req req-no">no</td><td class="prop-desc">Target time-to-offer in days.</td></tr>
-          <tr><td class="prop-name">decision_timeline</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">When candidates hear back after final round.</td></tr>
-          <tr><td class="prop-name">application_url</td><td class="prop-type">uri</td><td class="prop-req req-no">no</td><td class="prop-desc">Where to apply. Maps to schema.org <code>url</code>.</td></tr>
-          <tr><td class="prop-name">direct_apply</td><td class="prop-type">boolean</td><td class="prop-req req-no">no</td><td class="prop-desc">Whether the URL enables direct application. Maps to schema.org <code>directApply</code>.</td></tr>
-          <tr><td class="prop-name">accepts_otp_profile</td><td class="prop-type">boolean</td><td class="prop-req req-no">no</td><td class="prop-desc">Whether <a href="https://opentalentprotocol.org" target="_blank" rel="noopener">OTP</a> profiles are accepted as applications.</td></tr>
-          <tr><td class="prop-name">ai_screening</td><td class="prop-type">boolean</td><td class="prop-req req-no">no</td><td class="prop-desc">Transparency: is AI used in candidate screening?</td></tr>
+          <tr><td class="prop-name">stages</td><td class="prop-type">hiring_stage[]</td>
+            <td class="prop-desc">Each: <code>name</code>, <code>type</code>:
+              <div class="enum-list">
+                <span class="enum-val">screening</span><span class="enum-val">technical</span><span class="enum-val">behavioral</span>
+                <span class="enum-val">case_study</span><span class="enum-val">take_home</span><span class="enum-val">offer</span><span class="enum-val">other</span>
+              </div>
+              and optional <code>duration_minutes</code>.
+            </td>
+          </tr>
+          <tr><td class="prop-name">total_duration_days</td><td class="prop-type">integer</td><td class="prop-desc">Target time-to-offer in days.</td></tr>
+          <tr><td class="prop-name">decision_timeline</td><td class="prop-type">string</td><td class="prop-desc">When candidates hear back (max 200).</td></tr>
+          <tr><td class="prop-name">application_url</td><td class="prop-type">uri</td><td class="prop-desc">Where to apply.</td></tr>
+          <tr><td class="prop-name">accepts_otp_profile</td><td class="prop-type">boolean</td><td class="prop-desc">Whether <a href="https://opentalentprotocol.org" target="_blank" rel="noopener">OTP</a> profiles are accepted as applications.</td></tr>
+          <tr><td class="prop-name">ai_screening</td><td class="prop-type">boolean</td><td class="prop-desc">Transparency: is AI used in candidate screening?</td></tr>
         </tbody>
       </table>
     </section>
@@ -571,90 +590,31 @@ node dist/index.js ../../examples/backend-engineer-senior.json
       <div class="section-meta">
         <h2>culture</h2>
         <span class="badge badge-optional">optional</span>
-        <span class="badge badge-new">OJP extension</span>
       </div>
       <p>Culture signals for work-style and values matching.</p>
       <table class="prop-table">
-        <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
+        <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
         <tbody>
-          <tr><td class="prop-name">values</td><td class="prop-type">string[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Core company values.</td></tr>
-          <tr><td class="prop-name">work_style</td><td class="prop-type">string[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Work style descriptors (e.g. <code>"async-first"</code>, <code>"low-meeting"</code>).</td></tr>
-          <tr><td class="prop-name">special_commitments</td><td class="prop-type">string[]</td><td class="prop-req req-no">no</td><td class="prop-desc">Social/environmental commitments. Maps to schema.org <code>specialCommitments</code>.</td></tr>
-          <tr><td class="prop-name">dei_statement_url</td><td class="prop-type">uri</td><td class="prop-req req-no">no</td><td class="prop-desc">DEI statement link.</td></tr>
-          <tr><td class="prop-name">eeo_statement</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Equal employment opportunity statement.</td></tr>
-          <tr><td class="prop-name">diversity_statement</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Diversity commitment text.</td></tr>
-          <tr><td class="prop-name">employer_overview</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Brief employer branding text. Maps to schema.org <code>employerOverview</code>.</td></tr>
+          <tr><td class="prop-name">values</td><td class="prop-type">string[]</td><td class="prop-desc">Core company values (max 100 each).</td></tr>
+          <tr><td class="prop-name">work_style</td><td class="prop-type">string[]</td><td class="prop-desc">Work style descriptors (max 100 each). E.g. <code>"async-first"</code>, <code>"low-meeting"</code>.</td></tr>
         </tbody>
       </table>
     </section>
 
-    <!-- ---- visibility --------------------------------------- -->
-    <section class="spec-section" id="visibility">
+    <!-- ---- source ------------------------------------------- -->
+    <section class="spec-section" id="source">
       <div class="section-meta">
-        <h2>visibility</h2>
+        <h2>source</h2>
         <span class="badge badge-optional">optional</span>
-        <span class="badge badge-new">OJP extension</span>
       </div>
-      <p>Privacy controls governing what information is publicly visible versus restricted to specific stages of the hiring process.</p>
+      <p>Data provenance &mdash; which agent or system created this posting.</p>
       <table class="prop-table">
         <thead><tr><th>Property</th><th>Type</th><th>Req.</th><th>Description</th></tr></thead>
         <tbody>
-          <tr>
-            <td class="prop-name">salary</td><td class="prop-type">enum</td><td class="prop-req req-no">no</td>
-            <td class="prop-desc">
-              <div class="enum-list">
-                <span class="enum-val">public</span><span class="enum-val">on_request</span><span class="enum-val">after_interview</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="prop-name">team_details</td><td class="prop-type">enum</td><td class="prop-req req-no">no</td>
-            <td class="prop-desc">
-              <div class="enum-list"><span class="enum-val">public</span><span class="enum-val">after_application</span></div>
-            </td>
-          </tr>
-          <tr>
-            <td class="prop-name">process_stages</td><td class="prop-type">enum</td><td class="prop-req req-no">no</td>
-            <td class="prop-desc">
-              <div class="enum-list"><span class="enum-val">public</span><span class="enum-val">after_application</span></div>
-            </td>
-          </tr>
-          <tr>
-            <td class="prop-name">hiring_manager</td><td class="prop-type">enum</td><td class="prop-req req-no">no</td>
-            <td class="prop-desc">
-              <div class="enum-list"><span class="enum-val">public</span><span class="enum-val">after_application</span><span class="enum-val">after_interview</span></div>
-            </td>
-          </tr>
+          <tr><td class="prop-name">agent_id</td><td class="prop-type">string</td><td class="prop-req req-yes">yes</td><td class="prop-desc">Identifier of the agent or system (max 200).</td></tr>
+          <tr><td class="prop-name">platform</td><td class="prop-type">string</td><td class="prop-req req-no">no</td><td class="prop-desc">Platform name (max 200). E.g. <code>"lever"</code>, <code>"greenhouse"</code>.</td></tr>
         </tbody>
       </table>
-
-<pre>
-<span class="json-key">"visibility"</span>: {
-  <span class="json-key">"salary"</span>: <span class="json-str">"public"</span>,
-  <span class="json-key">"team_details"</span>: <span class="json-str">"public"</span>,
-  <span class="json-key">"process_stages"</span>: <span class="json-str">"public"</span>,
-  <span class="json-key">"hiring_manager"</span>: <span class="json-str">"after_application"</span>
-}
-</pre>
-    </section>
-
-    <!-- ---- extensions --------------------------------------- -->
-    <section class="spec-section" id="extensions">
-      <div class="section-meta">
-        <h2>extensions</h2>
-        <span class="badge badge-optional">optional</span>
-      </div>
-      <p>
-        A free extension object for domain-specific or proprietary fields. Use namespaced keys
-        to avoid collisions with future spec additions.
-      </p>
-<pre>
-<span class="json-key">"extensions"</span>: {
-  <span class="json-key">"jobgrow:match_score"</span>: <span class="json-num">87</span>,
-  <span class="json-key">"myats:requisition_id"</span>: <span class="json-str">"REQ-2026-0421"</span>
-}
-</pre>
-      <p>Adding data to <code>extensions</code> never breaks a conforming parser. Removing <code>extensions</code> never breaks core functionality.</p>
     </section>
 
     <!-- ======================================================
@@ -664,24 +624,25 @@ node dist/index.js ../../examples/backend-engineer-senior.json
       <h2>OTP &harr; OJP bilateral matching</h2>
       <hr class="section-divider" />
       <p>
-        The killer feature: symmetric matching between
-        <a href="https://opentalentprotocol.org" target="_blank" rel="noopener">Open Talent Protocol</a>
-        candidate profiles and OJP job listings. An agent with both documents can compute a
+        Symmetric matching between
+        <a href="https://opentalentprotocol.org" target="_blank" rel="noopener">OTP&nbsp;v0.2</a>
+        candidate profiles and OJP&nbsp;v0.2 job listings. An agent with both documents can compute a
         bilateral match score without any natural language processing.
       </p>
 
       <table class="prop-table">
-        <thead><tr><th>OTP (Candidate)</th><th>OJP (Job)</th><th>Match type</th><th>Logic</th></tr></thead>
+        <thead><tr><th>OTP v0.2 (Candidate)</th><th>OJP v0.2 (Job)</th><th>Match type</th><th>Logic</th></tr></thead>
         <tbody>
-          <tr><td class="prop-name">skills[]</td><td class="prop-name">requirements.must_have.skills[]</td><td class="prop-req req-yes">hard filter</td><td class="prop-desc">Skill name match + min_years &le; candidate years</td></tr>
-          <tr><td class="prop-name">skills[]</td><td class="prop-name">requirements.nice_to_have.skills[]</td><td class="prop-req req-no">soft rank</td><td class="prop-desc">Bonus score for matching preferred skills</td></tr>
-          <tr><td class="prop-name">credentials[]</td><td class="prop-name">requirements.must_have.credentials[]</td><td class="prop-req req-yes">hard filter</td><td class="prop-desc">Credential type + level match</td></tr>
-          <tr><td class="prop-name">work_history[].duration</td><td class="prop-name">requirements.must_have.experience_years.min</td><td class="prop-req req-yes">hard filter</td><td class="prop-desc">Sum of durations &ge; min</td></tr>
-          <tr><td class="prop-name">languages[]</td><td class="prop-name">requirements.must_have.languages[]</td><td class="prop-req req-yes">hard filter</td><td class="prop-desc">Proficiency &ge; required level</td></tr>
-          <tr><td class="prop-name">preferences.salary</td><td class="prop-name">offering.compensation.salary</td><td class="prop-req req-yes">bilateral</td><td class="prop-desc">candidate.min &le; job.max AND job.min &le; candidate.max</td></tr>
-          <tr><td class="prop-name">preferences.location</td><td class="prop-name">offering.location</td><td class="prop-req req-yes">hard filter</td><td class="prop-desc">Arrangement + region compatibility</td></tr>
-          <tr><td class="prop-name">preferences.work_style</td><td class="prop-name">culture.work_style</td><td class="prop-req req-no">soft rank</td><td class="prop-desc">Overlap scoring</td></tr>
-          <tr><td class="prop-name">preferences.industry</td><td class="prop-name">organization.industry</td><td class="prop-req req-no">soft rank</td><td class="prop-desc">Industry preference match</td></tr>
+          <tr><td class="prop-name">skills[].name / .level</td><td class="prop-name">must_have.skills[].name / .min_level</td><td class="prop-req req-yes">hard filter</td><td class="prop-desc">Skill name match + level &ge; min_level</td></tr>
+          <tr><td class="prop-name">skills[]</td><td class="prop-name">nice_to_have.skills[]</td><td class="prop-req req-no">soft rank</td><td class="prop-desc">Bonus score for matching preferred skills</td></tr>
+          <tr><td class="prop-name">certifications[]</td><td class="prop-name">must_have.certifications[]</td><td class="prop-req req-yes">hard filter</td><td class="prop-desc">Certification name match</td></tr>
+          <tr><td class="prop-name">experience[].duration</td><td class="prop-name">must_have.experience_years.min</td><td class="prop-req req-yes">hard filter</td><td class="prop-desc">Sum of durations &ge; min</td></tr>
+          <tr><td class="prop-name">languages[].proficiency</td><td class="prop-name">must_have.languages[].proficiency</td><td class="prop-req req-yes">hard filter</td><td class="prop-desc">CEFR level &ge; required level</td></tr>
+          <tr><td class="prop-name">salary_band</td><td class="prop-name">salary_band</td><td class="prop-req req-yes">bilateral</td><td class="prop-desc">candidate.min &le; job.max AND job.min &le; candidate.max</td></tr>
+          <tr><td class="prop-name">work_model</td><td class="prop-name">location.arrangement</td><td class="prop-req req-yes">hard filter</td><td class="prop-desc">Arrangement in candidate's work_model array</td></tr>
+          <tr><td class="prop-name">visa_status.authorized_countries</td><td class="prop-name">must_have.work_authorization</td><td class="prop-req req-yes">hard filter</td><td class="prop-desc">Candidate authorized in required country</td></tr>
+          <tr><td class="prop-name">seniority</td><td class="prop-name">seniority</td><td class="prop-req req-no">soft rank</td><td class="prop-desc">Exact or adjacent match</td></tr>
+          <tr><td class="prop-name">preferences.culture_values</td><td class="prop-name">culture.values</td><td class="prop-req req-no">soft rank</td><td class="prop-desc">Overlap scoring</td></tr>
         </tbody>
       </table>
     </section>
@@ -697,11 +658,11 @@ node dist/index.js ../../examples/backend-engineer-senior.json
 <span class="json-punct"># https://acme.com/.well-known/ojp.json</span>
 
 {
-  <span class="json-key">"version"</span>: <span class="json-str">"0.1"</span>,
+  <span class="json-key">"version"</span>: <span class="json-str">"0.2.0"</span>,
   <span class="json-key">"organization"</span>: <span class="json-str">"Acme Corp"</span>,
   <span class="json-key">"jobs_url"</span>: <span class="json-str">"https://acme.com/api/jobs.ojp.json"</span>,
   <span class="json-key">"total_active_jobs"</span>: <span class="json-num">12</span>,
-  <span class="json-key">"updated_at"</span>: <span class="json-str">"2026-02-21T14:00:00Z"</span>,
+  <span class="json-key">"updated_at"</span>: <span class="json-str">"2026-03-28T14:00:00Z"</span>,
   <span class="json-key">"accepts_otp_profile"</span>: <span class="json-bool">true</span>,
   <span class="json-key">"contact"</span>: <span class="json-str">"careers@acme.com"</span>
 }
@@ -715,31 +676,31 @@ node dist/index.js ../../examples/backend-engineer-senior.json
       <h2>Examples</h2>
       <hr class="section-divider" />
       <p>
-        Three complete, schema-conforming documents are included in the repository. They illustrate
-        how <code>requirements</code>, <code>offering</code>, and <code>process</code> are used
-        across different industries and seniority levels.
+        Three schema-conforming v0.2 documents are included in the repository. They demonstrate
+        how <code>must_have</code>/<code>nice_to_have</code>, <code>salary_band</code>, and <code>process</code>
+        are used across different industries and seniority levels.
       </p>
       <div class="examples-grid">
         <a class="example-card"
-           href="https://github.com/neogene-ai/open-job-protocol/blob/main/examples/backend-engineer-senior.json"
+           href="https://github.com/neogene-ai/open-job-protocol/blob/main/examples/v0.2/backend-engineer-senior.json"
            target="_blank" rel="noopener">
           <div class="example-card-role">Engineering</div>
           <div class="example-card-name">Senior Backend Engineer</div>
-          <div class="example-card-desc">Hybrid Go role in Berlin. Full process stages, equity, and team details.</div>
+          <div class="example-card-desc">Hybrid Go/Rust role in Berlin. Full process stages, salary band, ESCO skills, and team details.</div>
         </a>
         <a class="example-card"
-           href="https://github.com/neogene-ai/open-job-protocol/blob/main/examples/product-manager-mid.json"
+           href="https://github.com/neogene-ai/open-job-protocol/blob/main/examples/v0.2/product-manager-mid.json"
            target="_blank" rel="noopener">
           <div class="example-card-role">Product</div>
           <div class="example-card-name">Product Manager</div>
-          <div class="example-card-desc">Remote-first B2B SaaS role. Culture signals and growth path included.</div>
+          <div class="example-card-desc">Remote-first B2B SaaS role. Culture signals, growth path, and structured case-study hiring process.</div>
         </a>
         <a class="example-card"
-           href="https://github.com/neogene-ai/open-job-protocol/blob/main/examples/nurse-practitioner.json"
+           href="https://github.com/neogene-ai/open-job-protocol/blob/main/examples/v0.2/nurse-practitioner.json"
            target="_blank" rel="noopener">
           <div class="example-card-role">Healthcare</div>
           <div class="example-card-name">Nurse Practitioner</div>
-          <div class="example-card-desc">Onsite clinical role with credentials, certifications, and shift requirements.</div>
+          <div class="example-card-desc">Onsite clinical role with required certifications, language requirements, and shift differentials.</div>
         </a>
       </div>
     </section>
@@ -773,6 +734,14 @@ node dist/index.js path/to/job.json
         Provides composable functions ready to be registered as MCP tools:
         <code>validateJobPosting</code>, <code>matchCandidateToJob</code>, and <code>introspectJobPosting</code>.
       </p>
+
+      <h3>MCP server</h3>
+      <p>
+        A standalone MCP server exposing all 6 OTP/OJP agent tools (validate, introspect, parse for both schemas).
+        Source: <a href="https://github.com/neogene-ai/open-talent-protocol/tree/main/tools/mcp-server"
+                   target="_blank" rel="noopener"><code>tools/mcp-server/</code></a>
+        (hosted in the OTP repo).
+      </p>
     </section>
 
     <!-- ======================================================
@@ -786,6 +755,11 @@ node dist/index.js path/to/job.json
       <table class="prop-table">
         <thead><tr><th>Format</th><th>Guide</th><th>Notes</th></tr></thead>
         <tbody>
+          <tr>
+            <td class="prop-name">OJP v0.1</td>
+            <td><a href="https://github.com/neogene-ai/open-job-protocol/blob/main/docs/v0.2-migration.md" target="_blank" rel="noopener">v0.2-migration.md</a></td>
+            <td class="prop-desc">Full field mapping from nested (meta, role, offering) to flat top-level structure. v0.1 schema remains available.</td>
+          </tr>
           <tr>
             <td class="prop-name">schema.org/JobPosting</td>
             <td><a href="https://github.com/neogene-ai/open-job-protocol/blob/main/docs/migration-schemaorg.md" target="_blank" rel="noopener">migration-schemaorg.md</a></td>
@@ -806,6 +780,35 @@ node dist/index.js path/to/job.json
     </section>
 
     <!-- ======================================================
+         Ecosystem
+         ====================================================== -->
+    <section class="spec-section" id="ecosystem">
+      <h2>Ecosystem</h2>
+      <hr class="section-divider" />
+      <p>
+        OJP defines the employer side of agentic marketplaces. It is designed to work alongside
+        complementary open standards that together cover both sides of the hiring equation.
+      </p>
+
+      <div class="callout">
+        <strong>Open Talent Protocol (OTP)</strong> is the candidate-side counterpart to OJP &mdash; a
+        machine-first, vendor-neutral JSON standard for structuring professional profiles.
+        OTP&nbsp;v0.2 uses progressive disclosure tiers to control how much data is revealed at each
+        stage of matching, so 80% of agent traffic can run on the cheapest models.
+        <br /><br />
+        <a href="https://opentalentprotocol.org" target="_blank" rel="noopener">opentalentprotocol.org</a> &middot;
+        <a href="https://github.com/neogene-ai/open-talent-protocol" target="_blank" rel="noopener">GitHub repository</a>
+      </div>
+
+      <p>
+        Together, OTP + OJP enable fully structured, agent-driven bilateral matching.
+        Employers express requirements and offer details in an OJP posting; candidates express
+        preferences and constraints in their OTP profile. Agents on both sides can evaluate
+        fit and negotiate programmatically &mdash; no unstructured job-board listings or PDF resumes required.
+      </p>
+    </section>
+
+    <!-- ======================================================
          Governance
          ====================================================== -->
     <section class="spec-section" id="governance">
@@ -820,6 +823,7 @@ node dist/index.js path/to/job.json
         OJP is the employer-side counterpart to
         <a href="https://opentalentprotocol.org" target="_blank" rel="noopener">Open Talent Protocol</a>.
         Together, they form a complete, open standard for agentic talent marketplaces.
+        The same community develops both protocols.
       </p>
       <p>
         The project is governed by a maintainer council using lazy consensus. See
@@ -844,6 +848,23 @@ node dist/index.js path/to/job.json
     <a href="https://github.com/neogene-ai/open-job-protocol/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
   </nav>
 </footer>
+
+<!-- Version dropdown toggle -->
+<script>
+  (function () {
+    var dropdown = document.querySelector('.version-dropdown');
+    var btn = dropdown.querySelector('.nav-version');
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+      btn.setAttribute('aria-expanded', dropdown.classList.contains('open'));
+    });
+    document.addEventListener('click', function () {
+      dropdown.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  })();
+</script>
 
 <!-- Active sidebar link on scroll -->
 <script>

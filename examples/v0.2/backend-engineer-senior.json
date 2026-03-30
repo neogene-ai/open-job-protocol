@@ -1,0 +1,99 @@
+{
+  "schema_version": "0.2.0",
+  "ojp_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "created_at": "2026-03-15T09:00:00Z",
+  "updated_at": "2026-03-28T14:30:00Z",
+  "status": "active",
+  "valid_through": "2026-06-15",
+  "title": "Senior Backend Engineer",
+  "description": "We are looking for a Senior Backend Engineer to design and build scalable microservices powering our real-time data pipeline. You will own the architecture of core platform services, mentor mid-level engineers, and drive technical decisions across the backend guild. Our stack is Go and Rust on Kubernetes, with PostgreSQL and Redis for persistence.",
+  "summary": "Senior backend role owning real-time data pipeline architecture. Go/Rust on Kubernetes. Hybrid in Berlin, 75-95k EUR.",
+  "employment_type": "full_time",
+  "seniority": "senior",
+  "function": "Engineering",
+  "total_openings": 2,
+  "organization": {
+    "name": "Acme Corp",
+    "url": "https://acme.example.com",
+    "industry": "B2B SaaS",
+    "size": "scale_up",
+    "department": "Platform Engineering",
+    "headquarters": "Berlin, DE"
+  },
+  "location": {
+    "arrangement": "hybrid",
+    "country": "DE",
+    "city": "Berlin",
+    "remote_regions": ["DE", "AT", "CH"],
+    "relocation_support": true,
+    "visa_sponsorship": true
+  },
+  "salary_band": {
+    "min": 75000,
+    "max": 95000,
+    "currency": "EUR",
+    "period": "annual"
+  },
+  "salary_transparency": "public",
+  "must_have": {
+    "skills": [
+      { "name": "Go", "min_level": 4, "min_years": 3 },
+      { "name": "Kubernetes", "min_level": 3, "min_years": 2 },
+      { "name": "PostgreSQL", "min_level": 3 }
+    ],
+    "experience_years": { "min": 5, "max": 10 },
+    "languages": [
+      { "language": "en", "proficiency": "C1" }
+    ],
+    "work_authorization": ["DE", "AT", "CH"]
+  },
+  "nice_to_have": {
+    "skills": [
+      { "name": "Rust", "min_level": 2 },
+      { "name": "Redis", "min_level": 3 },
+      { "name": "Terraform", "min_level": 2, "esco_id": "S5.6.1" }
+    ],
+    "experience_years": { "preferred": 7 },
+    "certifications": ["CKA"],
+    "languages": [
+      { "language": "de", "proficiency": "B1" }
+    ]
+  },
+  "benefits": [
+    { "category": "health", "description": "Comprehensive private health insurance for you and your family" },
+    { "category": "development", "description": "2,500 EUR annual learning budget and 5 conference days" },
+    { "category": "flexibility", "description": "Flexible hours with async-first core hours 10:00-15:00 CET" },
+    { "category": "financial", "description": "VSOP equity package vesting over 4 years" },
+    { "category": "retirement", "description": "Company-matched pension scheme (bAV)" }
+  ],
+  "team": {
+    "name": "Platform Squad",
+    "size": 6,
+    "reports_to": "VP of Engineering",
+    "tech_stack": ["Go", "Rust", "Kubernetes", "PostgreSQL", "Redis", "Kafka", "Terraform"],
+    "methodology": "kanban",
+    "description": "Owns the core data pipeline, API gateway, and infrastructure automation. Ships weekly."
+  },
+  "process": {
+    "stages": [
+      { "name": "Recruiter intro call", "type": "screening", "duration_minutes": 30 },
+      { "name": "Technical deep-dive", "type": "technical", "duration_minutes": 60 },
+      { "name": "System design session", "type": "technical", "duration_minutes": 90 },
+      { "name": "Team & culture fit", "type": "behavioral", "duration_minutes": 45 },
+      { "name": "Offer", "type": "offer", "duration_minutes": 30 }
+    ],
+    "total_duration_days": 14,
+    "decision_timeline": "Within 3 business days after final round",
+    "application_url": "https://acme.example.com/careers/senior-backend",
+    "accepts_otp_profile": true,
+    "ai_screening": false
+  },
+  "culture": {
+    "values": ["Ownership", "Transparency", "Continuous learning"],
+    "work_style": ["async-first", "low-meeting", "written-communication"]
+  },
+  "source": {
+    "agent_id": "acme-ats-v2",
+    "platform": "lever"
+  }
+}
