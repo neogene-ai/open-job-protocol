@@ -58,7 +58,7 @@ a:hover { color: var(--color-accent-dk); text-decoration: underline; }
 
 .nav-brand {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.5rem;
   font-weight: 700;
   font-size: 1rem;
@@ -103,7 +103,7 @@ a:hover { color: var(--color-accent-dk); text-decoration: underline; }
   transform: rotate(180deg);
 }
 
-.version-menu {
+ul.version-menu {
   display: none;
   position: absolute;
   top: calc(100% + 6px);
@@ -120,13 +120,14 @@ a:hover { color: var(--color-accent-dk); text-decoration: underline; }
   overflow: hidden;
 }
 
-.version-menu li {
+ul.version-menu li {
   list-style: none;
+  list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.version-dropdown.open .version-menu {
+.version-dropdown.open ul.version-menu {
   display: block;
 }
 
